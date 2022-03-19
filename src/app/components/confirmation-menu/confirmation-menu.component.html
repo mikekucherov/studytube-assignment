@@ -1,0 +1,29 @@
+<div class="confirmation-menu">
+  <p class="confirmation-menu_title">
+    {{ title }}
+  </p>
+  <p class="confirmation-menu_message">
+    {{ message }}
+  </p>
+
+  <div class="confirmation-menu_buttons">
+    <button
+      (click)="confirmClick.emit()"
+      mat-mini-fab
+      color="accent"
+      aria-label="Delete user button"
+      class="confirmation-menu_buttons__confirm"
+    >
+      <mat-icon>done</mat-icon>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="accent"
+      aria-label="Delete user button"
+      class="confirmation-menu_buttons__cancel"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

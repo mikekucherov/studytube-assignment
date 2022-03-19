@@ -1,0 +1,29 @@
+@import "./src/assets/vars";
+
+.confirmation-menu {
+  @include space(padding, vr-3);
+
+  &_title {
+    @include font($typography-h3...);
+  }
+
+  &_message {
+    color: $black-60;
+
+    @include font($typography-p1...);
+  }
+
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__confirm {
+      background-color: $accept;
+    }
+
+    &__cancel {
+      background-color: $cancel;
+    }
+  }
+}
