@@ -1,0 +1,95 @@
+<div class="users-table_search">
+  <input
+    matInput
+    placeholder="Search"
+    [(ngModel)]="searchValue"
+    (ngModelChange)="filterUsersByQuery($event)"
+  />
+  <button
+    mat-icon-button
+    color="accent"
+    aria-label="Search clear button"
+    (click)="filterUsersByQuery('')"
+  >
+    <mat-icon>cancel</mat-icon>
+  </button>
+</div>
+
+<table class="users-table" mat-table [dataSource]="dataSource">
+  <!-- Avatar Column -->
+  <ng-container matColumnDef="avatar">
+    <th mat-header-cell *matHeaderCellDef>Avatar</th>
+    <td mat-cell *matCellDef="let element">
+      <img
+        src="{{ element.avatar }}"
+        alt="{{ element.fullname }} avatar"
+        class="users-table_avatar"
+      />
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="fullname">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td
+      mat-cell
+      class="users-table_text-cell"
+      *matCellDef="let element"
+      [innerHTML]="element.fullname | highlight: searchValue"
+    ></td>
+  </ng-container>
+
+  <!-- E-mail Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>E-mail</th>
+    <td
+      mat-cell
+      class="users-table_text-cell"
+      *matCellDef="let element"
+      [innerHTML]="element.email | highlight: searchValue"
+    ></td>
+  </ng-container>
+
+  <!-- Learnings Column -->
+  <ng-container matColumnDef="learnings">
+    <th mat-header-cell *matHeaderCellDef>Learnings</th>
+    <td mat-cell class="users-table_text-cell" *matCellDef="let element">
+      <mat-chip-list #chipsList aria-label="Learnings list">
+        <mat-chip *ngFor="let learning of element.learnings">
+          {{ learning.title }}
+        </mat-chip>
+        <mat-chip
+          class="users-table_edit-learnings-button"
+          color="accent"
+          (click)="editLearnings.emit(element.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </td>
+  </ng-container>
+
+  <!-- Delete User Button Column -->
+  <ng-container matColumnDef="edit">
+    <th class="users-table_edit-column" mat-header-cell *matHeaderCellDef></th>
+    <td class="users-table_edit-column" mat-cell *matCellDef="let element">
+      <button mat-mini-fab color="accent" aria-label="Delete user button">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    class="users-table_row"
+  ></tr>
+</table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>

@@ -1,0 +1,100 @@
+// FONTS
+$ptmono-font: "PTMono", monospace;
+//TYPOGRAPHY
+//
+$typography-code: (
+  /*font-family*/
+  $ptmono-font,
+  /*font-style*/
+  normal,
+  /*font-weight*/
+  400,
+  /*font-size*/
+  (
+    "desktop": 16px
+  ),
+  /*line-height*/
+  (
+    "desktop": 28px
+  ),
+  /*font-feature*/
+  ""
+);
+//
+$typography-p1: (
+  /*font-family*/
+  $ptmono-font,
+    /*font-style*/
+  normal,
+    /*font-weight*/
+  400,
+    /*font-size*/
+  (
+    "desktop": 16px
+  ),
+    /*line-height*/
+  (
+    "desktop": 28px
+  ),
+    /*font-feature*/
+  ""
+);
+//
+$typography-h2: (
+  /*font-family*/
+  $ptmono-font,
+    /*font-style*/
+  normal,
+    /*font-weight*/
+  600,
+    /*font-size*/
+  (
+    "desktop": 24px
+  ),
+    /*line-height*/
+  (
+    "desktop": 32px
+  ),
+    /*font-feature*/
+  ""
+);
+//
+//
+$typography-h3: (
+  /*font-family*/
+  $ptmono-font,
+    /*font-style*/
+  normal,
+    /*font-weight*/
+  600,
+    /*font-size*/
+  (
+    "desktop": 16px
+  ),
+    /*line-height*/
+  (
+    "desktop": 28px
+  ),
+    /*font-feature*/
+  ""
+);
+//
+
+@mixin font($family, $style, $weight, $size, $line-height, $font-feature) {
+  font-weight: $weight;
+  font-size: map-get($size, "desktop");
+  line-height: map-get($line-height, "desktop");
+  font-family: $family;
+  font-style: $style;
+  font-feature-settings: $font-feature;
+
+  @include Query($sm) {
+    font-size: map-get($size, "tablet");
+    line-height: map-get($line-height, "tablet");
+  }
+
+  @include Query($xs) {
+    font-size: map-get($size, "mobile");
+    line-height: map-get($line-height, "mobile");
+  }
+}

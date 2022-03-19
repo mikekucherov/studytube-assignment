@@ -1,0 +1,10 @@
+<ng-container
+  *init="{
+    users: users$ | async
+  } as params"
+>
+  <app-users-table [users]="params.users"
+                   (editLearnings)="openLearningsDialog($event)"
+  ></app-users-table>
+  <router-outlet></router-outlet>
+</ng-container>

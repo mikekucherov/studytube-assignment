@@ -1,0 +1,66 @@
+@import "./src/assets/vars";
+
+.users-table {
+  width: 100%;
+
+  ::ng-deep td, th {
+    border: none;
+  }
+
+  ::ng-deep tr {
+    height: 64px;
+  }
+
+  &_search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 30rem;
+
+    box-shadow: $drop-shadow;
+    border-radius: $border-radius-large;
+
+    @include space(padding, vr-1);
+    @include space(padding-left, vr-2);
+    @include space(margin-bottom, vr-2);
+
+    @include font($typography-p1...);
+  }
+
+  &_avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  &_text-cell {
+    @include font($typography-p1...);
+  }
+
+  &_row {
+  }
+
+  &_edit-column {
+    width: 32px;
+  }
+
+  &_edit-learnings-button {
+    width: 32px;
+
+    padding: 6px;
+
+    cursor: pointer;
+
+    mat-icon {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    &:hover {
+      color: $white;
+      background-color: $accent;
+      transition: 0.3s;
+    }
+  }
+}

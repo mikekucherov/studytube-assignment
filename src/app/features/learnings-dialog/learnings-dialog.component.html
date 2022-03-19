@@ -1,0 +1,28 @@
+<div
+  *init="{ user: user$ | async, learnings: learnings$ | async } as params"
+  class="learnings-dialog"
+>
+  <div class="learnings-dialog_container">
+    <app-user-info-widget
+      class="learnings-dialog_user-widget"
+      [user]="params.user"
+    ></app-user-info-widget>
+
+    <app-learnings-attach-table
+      class="learnings-dialog_learnings-table"
+      [learnings]="params.learnings"
+      (checkLearning)="checkLearningHandler($event, params.user)"
+    ></app-learnings-attach-table>
+
+    <button
+      [routerLink]="'../..'"
+      mat-icon-button
+      color="accent"
+      aria-label="Delete user button"
+      class="learnings-dialog_close-button"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="learnings-dialog_background"></div>
+</div>

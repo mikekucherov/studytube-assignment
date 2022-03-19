@@ -1,0 +1,26 @@
+<button class="learning-card shadowed-container" (click)="cardClick.emit()">
+  <mat-checkbox
+    class="learning-card_checkbox"
+    [checked]="isSelected"
+  ></mat-checkbox>
+  <div class="learning-card_inner">
+    <img
+      src="{{ learning.cover }}"
+      alt="{{ learning.title }} cover"
+      class="learning-card_cover"
+    />
+    <div class="learning-card_info">
+      <p class="learning-card_info__title">
+        {{ learning.title }}
+      </p>
+      <p
+        class="learning-card_info__description"
+        [innerHTML]="learning.description"
+      ></p>
+      <div class="learning-card_info__duration">
+        <mat-icon>watch_later</mat-icon>
+        {{ learning.duration }}
+      </div>
+    </div>
+  </div>
+</button>

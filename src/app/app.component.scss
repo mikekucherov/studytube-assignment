@@ -1,0 +1,40 @@
+@import "./src/assets/vars";
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  @include space(padding, vr-3);
+
+  &_navigation {
+    align-self: center;
+    width: 100%;
+    max-width: 80rem;
+
+    margin-bottom: 24px;
+
+    &__logo {
+      width: 176px;
+    }
+
+    &__link {
+      color: black;
+      text-decoration: none;
+
+      @include font($typography-h3...);
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      &--active {
+        color: $accent;
+      }
+    }
+  }
+
+  &_container {
+    @include space(padding, vr-4);
+  }
+}

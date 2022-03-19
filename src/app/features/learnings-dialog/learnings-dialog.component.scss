@@ -1,0 +1,59 @@
+@import "./src/assets/vars";
+
+.learnings-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  &_container {
+    position: relative;
+    top: 20%;
+    left: 10%;
+    z-index: 10;
+    width: 80%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: row;
+
+    border-radius: $border-radius-medium;
+    box-shadow: $drop-shadow;
+    background-color: $white;
+
+    @include space(padding, vr-4);
+  }
+
+  &_user-widget {
+    //position: sticky;
+    //top: 0;
+
+    display: flex;
+    width: 20rem;
+    height: 20rem;
+    aspect-ratio: 1;
+  }
+
+  &_learnings-table {
+    display: flex;
+    flex-grow: 1;
+
+    padding-bottom: 24px;
+  }
+
+  &_close-button {
+    position: relative;
+    top: -16px;
+    right: -16px;
+  }
+
+  &_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black-40;
+  }
+}

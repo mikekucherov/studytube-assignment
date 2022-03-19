@@ -1,0 +1,10 @@
+<div class="learnings-table">
+  <app-learning-card
+    *ngFor="let learning of learnings"
+    [learning]="learning"
+    [isSelected]="learning.isSelected"
+    (cardClick)="checkLearning.emit(learning.id)"
+    class="learnings-table_card"
+  ></app-learning-card>
+</div>
+

@@ -1,0 +1,65 @@
+@import "./src/assets/vars";
+
+.learning-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+
+  cursor: pointer;
+
+  border: none;
+
+  @include space(padding, vr-3);
+
+  &:hover {
+    box-shadow: 2px 2px 18px $accent-20;
+  }
+
+  &_inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &_checkbox {
+    @include space(margin-right, vr-2)
+  }
+
+  &_cover {
+    width: 48px;
+    height: 48px;
+
+    @include space(margin-right, vr-3)
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__title {
+      @include font($typography-h3...);
+    }
+
+    &__description {
+      color:$black-60;
+
+      @include font($typography-p1...);
+    }
+
+    &__duration {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 72px;
+
+      color: $black-60;
+
+      @include font($typography-code...);
+    }
+  }
+}
