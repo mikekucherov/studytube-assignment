@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UsersComponent implements OnInit {
   users$: Observable<UserInfo[]> = this.usersService.users$;
 
+  deletedUserId$ = this.usersService.deletedUserId$;
+
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -26,5 +28,9 @@ export class UsersComponent implements OnInit {
     this.router.navigate([userId, 'edit-learnings'], {
       relativeTo: this.activatedRoute,
     });
+  }
+
+  deleteUserHandler(userId) {
+    this.usersService.fakeDeleteUser(userId);
   }
 }

@@ -5,5 +5,5 @@ export interface UserInfo {
   fullname: string;
   email: string;
   id: string;
-  learnings: LearningShort[]; // TODO Replace with an interface of learning
+  learnings: LearningShort[];
 }

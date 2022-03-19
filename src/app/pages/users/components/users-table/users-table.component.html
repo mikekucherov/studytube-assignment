@@ -55,7 +55,9 @@
     <th mat-header-cell *matHeaderCellDef>Learnings</th>
     <td mat-cell class="users-table_text-cell" *matCellDef="let element">
       <mat-chip-list #chipsList aria-label="Learnings list">
-        <mat-chip *ngFor="let learning of element.learnings">
+        <mat-chip
+          *ngFor="let learning of element.learnings | call: sortLearnings"
+        >
           {{ learning.title }}
         </mat-chip>
         <mat-chip
@@ -73,8 +75,26 @@
   <ng-container matColumnDef="edit">
     <th class="users-table_edit-column" mat-header-cell *matHeaderCellDef></th>
     <td class="users-table_edit-column" mat-cell *matCellDef="let element">
-      <button mat-mini-fab color="accent" aria-label="Delete user button">
-        <mat-icon>delete</mat-icon>
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Delete user button"
+        [matMenuTriggerFor]="deleteConfirmationMenu"
+      >
+        <mat-icon *ngIf="element.id !== deletingUserId; else deletionSpinner"
+          >delete</mat-icon
+        >
+        <ng-template #deletionSpinner>
+          <app-spinner></app-spinner>
+        </ng-template>
+
+        <mat-menu #deleteConfirmationMenu="matMenu">
+          <app-confirmation-menu
+            [title]="'Delete user?'"
+            [message]="'Are you sure you want to delete this user?!'"
+            (confirmClick)="deleteUser.emit(element.id)"
+          ></app-confirmation-menu>
+        </mat-menu>
       </button>
     </td>
   </ng-container>

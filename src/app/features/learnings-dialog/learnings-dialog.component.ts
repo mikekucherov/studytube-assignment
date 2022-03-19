@@ -10,9 +10,7 @@ import { UsersService } from '../../pages/users/users.service';
 import { combineLatest, Observable } from 'rxjs';
 import { UserInfo } from '../../pages/users/users.model';
 import { LearningsService } from '../../pages/learnings/learnings.service';
-import {
-  LearningSelection,
-} from '../../pages/learnings/learnings.model';
+import { LearningSelection } from '../../pages/learnings/learnings.model';
 
 @Component({
   selector: 'app-learnings-dialog',
@@ -40,9 +38,6 @@ export class LearningsDialogComponent implements OnInit {
   ]).pipe(
     map(([user, learnings]) => {
       return learnings.map((learning) => {
-        console.log(user.learnings.some(
-          (userLearning) => userLearning.id === learning.id
-        ));
         return {
           ...learning,
           isSelected: user.learnings.some(
@@ -71,13 +66,20 @@ export class LearningsDialogComponent implements OnInit {
     this.learningsService.initLearnings();
   }
 
-  checkLearningHandler(learningId: string, user: UserInfo) {
-    let updatedLearningsList;
+  // TODO Get rid of learnings param if Real API will be available
+  checkLearningHandler(
+    learningId: string,
+    user: UserInfo,
+    learnings?: LearningSelection[]
+  ) {
+    const updatedUserInfo = {
+      ...user,
+      learnings: user.learnings.some((learning) => learning.id === learningId)
+        ? user.learnings.filter((l) => l.id !== learningId)
+        : [...user.learnings, learnings.find((l) => l.id === learningId)],
+    };
 
-    if (user.learnings.some((learning) => learning.id === learningId)) {
-      console.log('REMOVE LEARNING');
-    } else {
-      console.log('ADD LEARNING');
-    }
+    // TODO Fake update
+    this.usersService.fakeUpdateUsersLearnings(updatedUserInfo);
   }
 }

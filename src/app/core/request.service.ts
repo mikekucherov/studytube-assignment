@@ -2,13 +2,17 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {UserInfo} from "../pages/users/users.model";
 import {LearningInfo, LearningStatus} from "../pages/learnings/learnings.model";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  constructor() { }
+  BASE_API_URL = environment.APIEndpoint;
+
+  constructor(private http: HttpClient) { }
 
   getUsersList(): Observable<UserInfo[]> {
     return of([

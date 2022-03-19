@@ -1,10 +1,13 @@
 <ng-container
   *init="{
-    users: users$ | async
+    users: users$ | async,
+    deletedUserId: deletedUserId$ | async
   } as params"
 >
   <app-users-table [users]="params.users"
+                   [deletingUserId]="params.deletedUserId"
                    (editLearnings)="openLearningsDialog($event)"
+                   (deleteUser)="deleteUserHandler($event)"
   ></app-users-table>
   <router-outlet></router-outlet>
 </ng-container>

@@ -10,6 +10,7 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { UserInfo } from '../../users.model';
+import {LearningShort} from "../../../learnings/learnings.model";
 
 @Component({
   selector: 'app-users-table',
@@ -21,8 +22,10 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
   @Input() set users(value: UserInfo[]) {
     this.dataSource = new MatTableDataSource<UserInfo>(value);
   }
+  @Input() deletingUserId;
 
   @Output() editLearnings = new EventEmitter();
+  @Output() deleteUser = new EventEmitter();
 
   displayedColumns: string[] = [
     'avatar',
@@ -46,8 +49,12 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  filterUsersByQuery(query) {
+  filterUsersByQuery(query: string) {
     this.dataSource.filter = query;
     this.searchValue = query;
+  }
+
+  sortLearnings(learnings: LearningShort[]) {
+    return learnings.sort((a, b) => a.title > b.title ? 1 : -1);
   }
 }
