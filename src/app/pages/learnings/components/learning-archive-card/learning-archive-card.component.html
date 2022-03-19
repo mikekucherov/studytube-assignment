@@ -1,0 +1,48 @@
+<div class="learning-card shadowed-container">
+  <div class="learning-card--left">
+    <img
+      src="{{ learning.cover }}"
+      alt="{{ learning.title }} cover"
+      class="learning-card_cover"
+    />
+
+    <div class="learning-card_info">
+      <p class="learning-card_title">
+        {{ learning.title }}
+      </p>
+      <p class="learning-card_description">
+        {{ learning.description }}
+      </p>
+      <div class="learning-card_duration">
+        <mat-icon>watch_later</mat-icon>
+        {{ learning.duration }}
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="learning-card_status"
+    [class.learning-card_status--active]="
+      learning.status === learningStatus.Active
+    "
+  >
+    <mat-chip [matMenuTriggerFor]="statusMenu">{{
+      learning.status === learningStatus.Active ? "Active" : "Inactive"
+    }}</mat-chip>
+
+    <mat-menu #statusMenu="matMenu">
+      <button
+        mat-menu-item
+        (click)="changeLearningStatus.emit(learningStatus.Active)"
+      >
+        Active
+      </button>
+      <button
+        mat-menu-item
+        (click)="changeLearningStatus.emit(learningStatus.Archive)"
+      >
+        Inactive
+      </button>
+    </mat-menu>
+  </div>
+</div>

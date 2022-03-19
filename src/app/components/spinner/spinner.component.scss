@@ -1,15 +1,55 @@
 @import "./src/assets/vars";
 
-::ng-deep .mat-spinner {
-  width: 24px !important;
-  height: 24px !important;
+.spinner {
+  &--white {
+    ::ng-deep .mat-spinner {
+      circle {
+        stroke: $white !important;
+      }
+    }
+  }
 
-  svg {
-    width: 24px !important;
-    height: 24px !important;
+  &--accent {
+    ::ng-deep .mat-spinner {
+      circle {
+        stroke: $accent !important;
+      }
+    }
+  }
 
-    circle {
-      stroke: $white !important;
+  &--s {
+    ::ng-deep .mat-spinner {
+      width: 24px !important;
+      height: 24px !important;
+
+      svg {
+        width: 24px !important;
+        height: 24px !important;
+      }
+    }
+  }
+
+  &--m {
+    ::ng-deep .mat-spinner {
+      width: 32px !important;
+      height: 32px !important;
+
+      svg {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    }
+  }
+
+  &--l {
+    ::ng-deep .mat-spinner {
+      width: 48px !important;
+      height: 48px !important;
+
+      svg {
+        width: 48px !important;
+        height: 48px !important;
+      }
     }
   }
 }

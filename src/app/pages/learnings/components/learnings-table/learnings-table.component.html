@@ -1,0 +1,7 @@
+<div class="learnings-table scroll-container">
+  <app-learning-archive-card
+    *ngFor="let learning of learnings"
+    [learning]="learning"
+    (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
+  ></app-learning-archive-card>
+</div>

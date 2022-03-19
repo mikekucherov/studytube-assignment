@@ -40,6 +40,25 @@ $typography-p1: (
   ""
 );
 //
+$typography-h1: (
+  /*font-family*/
+  $ptmono-font,
+    /*font-style*/
+  normal,
+    /*font-weight*/
+  600,
+    /*font-size*/
+  (
+    "desktop": 32px
+  ),
+    /*line-height*/
+  (
+    "desktop": 42px
+  ),
+    /*font-feature*/
+  ""
+);
+//
 $typography-h2: (
   /*font-family*/
   $ptmono-font,
@@ -58,7 +77,6 @@ $typography-h2: (
     /*font-feature*/
   ""
 );
-//
 //
 $typography-h3: (
   /*font-family*/

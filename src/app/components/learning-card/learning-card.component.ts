@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
-import {LearningSelection} from "../../pages/learnings/learnings.model";
+import {LearningInfo, LearningSelection} from "../../pages/learnings/learnings.model";
 
 @Component({
   selector: 'app-learning-card',

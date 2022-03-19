@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LearningsService} from "./learnings.service";
 
 @Component({
   selector: 'app-learnings',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningsComponent implements OnInit {
 
-  constructor() { }
+  learnings$ = this.learningsService.learnings$;
+
+  constructor(
+    private learningsService: LearningsService
+  ) { }
 
   ngOnInit(): void {
+    this.learningsService.initLearnings();
+  }
+
+  changeLearningStatusHandler($event) {
+    // TODO Make fake update learning status
   }
 
 }

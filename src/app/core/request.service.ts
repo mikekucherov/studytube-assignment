@@ -114,7 +114,7 @@ export class RequestService {
         description: 'The best front-end framework course',
         duration: '12 h',
         cover:
-          'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+          'https://seeklogo.com/images/R/rxjs-logo-DD3DF87EEF-seeklogo.com.png',
         status: LearningStatus.Active
       },
       {
@@ -129,6 +129,24 @@ export class RequestService {
       {
         id: '4',
         title: 'React.js',
+        description: 'The worst front-end framework course',
+        duration: '12 h',
+        cover:
+          'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+        status: LearningStatus.Active
+      },
+      {
+        id: '5',
+        title: 'D3.js',
+        description: 'The worst front-end framework course',
+        duration: '12 h',
+        cover:
+          'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+        status: LearningStatus.Active
+      },
+      {
+        id: '6',
+        title: 'Vue.js',
         description: 'The worst front-end framework course',
         duration: '12 h',
         cover:

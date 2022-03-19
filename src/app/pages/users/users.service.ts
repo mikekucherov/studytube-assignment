@@ -25,6 +25,7 @@ export class UsersService {
   ) {}
 
   async initUsers() {
+    // TODO Add pagintation to user getting request
     const users = await this.requestService
       .getUsersList()
       .pipe(take(1))
@@ -54,7 +55,7 @@ export class UsersService {
 
     this.deletedUserId$.next(userId);
 
-
+    // TODO Subscribe to undo action
     const users = await of(currentUsers.filter((user) => user.id !== userId))
       .pipe(
         delay(2000),

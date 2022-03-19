@@ -5,13 +5,11 @@
   flex-direction: row;
   align-items: center;
 
+  background-color: $white;
+
   border-radius: $border-radius-large;
   box-shadow: $drop-shadow;
 
   @include space(padding, vr-3);
   @include space(gap, vr-3);
-
-  &:hover {
-    box-shadow: $drop-shadow-hover;
-  }
 }

@@ -19,11 +19,11 @@
     justify-content: space-between;
 
     &__confirm {
-      background-color: $accept;
+      background-color: $green;
     }
 
     &__cancel {
-      background-color: $cancel;
+      background-color: $red;
     }
   }
 }
