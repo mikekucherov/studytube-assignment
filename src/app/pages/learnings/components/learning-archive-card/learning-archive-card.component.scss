@@ -51,12 +51,13 @@
   }
 
   &_status {
-    //justify-self: flex-end;
-
-    cursor: pointer;
 
     .mat-chip {
       background-color: $red-40;
+    }
+
+    &__button {
+      cursor: pointer;
     }
 
     &--active {

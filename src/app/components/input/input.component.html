@@ -1,0 +1,24 @@
+<div class="input">
+  <input
+    matInput
+    placeholder="Search"
+    [(ngModel)]="value"
+    (ngModelChange)="valueChange.emit($event)"
+  />
+  <mat-icon
+    *ngIf="type === 'search' && !value?.length"
+    color="accent"
+    class="input_button"
+    >search</mat-icon
+  >
+  <button
+    *ngIf="isAllowClear && !!value?.length"
+    mat-icon-button
+    color="accent"
+    aria-label="Search clear button"
+    class="input_button"
+    (click)="valueChange.emit('')"
+  >
+    <mat-icon>cancel</mat-icon>
+  </button>
+</div>

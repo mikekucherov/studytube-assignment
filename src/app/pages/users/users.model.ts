@@ -9,3 +9,5 @@ export type UserInfo = {
 };
 
 export type UserShort = Pick<UserInfo, 'avatar' | 'fullname' | 'id'>;
+
+export type UserSelection = UserInfo & { isSelected: boolean };

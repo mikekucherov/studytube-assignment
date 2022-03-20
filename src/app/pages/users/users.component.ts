@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserInfo } from './users.model';
 import { UsersService } from './users.service';
@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersComponent implements OnInit {
   users$: Observable<UserInfo[]> = this.usersService.users$;

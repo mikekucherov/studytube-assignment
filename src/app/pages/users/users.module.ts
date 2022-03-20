@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { ComponentsModule } from '../../components/components.module';
     MatInputModule,
     FormsModule,
     MatMenuModule,
-    MatProgressSpinnerModule,
   ],
 })
 export class UsersModule {}

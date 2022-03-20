@@ -1,5 +1,30 @@
-<div class="users-dialog shadowed-container"
-     (clickOutside)="closeDialog.emit()"
+<div
+  *init="{ selectedUsers: selectedUsers$ | async } as params"
+  class="users-dialog shadowed-container"
+  (clickOutside)="closeDialog.emit(params.selectedUsers)"
 >
-  123
+  <p class="users-dialog_hint"
+     *ngIf="isHintDisplayed"
+  >{{ 'To save changes click outside this dialog' }}</p>
+  <div class="users-dialog_container scroll-container">
+    <div
+      class="users-dialog_row shadowed-container shadowed-container--hover"
+      *ngFor="let user of users"
+      (click)="clickUserRow(params.selectedUsers, user.id)"
+    >
+      <mat-checkbox
+        class="users-dialog_row__checkbox"
+        [checked]="params.selectedUsers | call: getIsUserSelected:user.id"
+      ></mat-checkbox>
+      <img
+        src="{{ user.avatar }}"
+        alt="{{ user.fullname }} avatar"
+        class="users-dialog_row__avatar"
+      />
+      <p class="users-dialog_row__name">
+        {{ user.fullname }}
+      </p>
+    </div>
+  </div>
 </div>
+<div class="users-dialog_overlay"></div>

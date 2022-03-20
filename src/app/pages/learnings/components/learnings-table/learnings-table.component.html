@@ -1,20 +1,25 @@
 <div
   *init="{
     editableLearningId: editableLearningId$ | async,
-    users: editableLearningsUsers$ | async
+    editableLearningUsers: editableLearningsUsers$ | async
   } as params"
   class="learnings-table scroll-container"
 >
+  <app-input [(value)]="searchValue" [type]="'search'"></app-input>
   <app-learning-archive-card
-    *ngFor="let learning of learnings"
+    *ngFor="
+      let learning of learnings | call: filterLearningsByQuery:searchValue
+    "
     [learning]="learning"
     (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
-    (editUsersList)="openUsersDialog($event, learning.id)"
+    (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
   ></app-learning-archive-card>
 
   <app-edit-users-dialog
     *ngIf="params.editableLearningId"
-    [users]="params.users"
-    (closeDialog)="editableLearningId$.next(null)"
+    [users]="params.editableLearningUsers"
+    (closeDialog)="
+      updateSelectedUsers($event, params.editableLearningId, learnings)
+    "
   ></app-edit-users-dialog>
 </div>

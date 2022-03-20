@@ -1,5 +1,10 @@
-<ng-container *init="{ learnings: learnings$ | async } as params">
-  <app-learnings-table [learnings]="params.learnings"
-                       (changeLearningStatus)="changeLearningStatusHandler($event)"
+<ng-container
+  *init="{ learnings: learnings$ | async, users: users$ | async } as params"
+>
+  <app-learnings-table
+    [learnings]="params.learnings"
+    [allUsers]="params.users"
+    (changeLearningStatus)="changeLearningStatusHandler($event)"
+    (changeLearningUsers)="changeLearningUsersHandler($event, params.users)"
   ></app-learnings-table>
 </ng-container>

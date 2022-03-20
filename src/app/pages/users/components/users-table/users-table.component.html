@@ -1,19 +1,9 @@
 <div class="users-table_search">
-<!--  TODO Move to Components module input component-->
-  <input
-    matInput
-    placeholder="Search"
-    [(ngModel)]="searchValue"
-    (ngModelChange)="filterUsersByQuery($event)"
-  />
-  <button
-    mat-icon-button
-    color="accent"
-    aria-label="Search clear button"
-    (click)="filterUsersByQuery('')"
-  >
-    <mat-icon>cancel</mat-icon>
-  </button>
+  <app-input
+    [value]="searchValue"
+    [isAllowClear]="true"
+    (valueChange)="filterUsersByQuery($event)"
+  ></app-input>
 </div>
 
 <table class="users-table" mat-table [dataSource]="dataSource">
@@ -62,6 +52,7 @@
           {{ learning.title }}
         </mat-chip>
         <mat-chip
+          *ngIf="element.learnings?.length"
           class="users-table_edit-learnings-button"
           color="accent"
           (click)="editLearnings.emit(element.id)"
@@ -81,27 +72,6 @@
         [isConfirmation]="true"
         (confirmationClick)="deleteUser.emit(element.id)"
       ></app-delete-button>
-<!--      <button-->
-<!--        mat-mini-fab-->
-<!--        color="accent"-->
-<!--        aria-label="Delete user button"-->
-<!--        [matMenuTriggerFor]="deleteConfirmationMenu"-->
-<!--      >-->
-<!--        <mat-icon *ngIf="element.id !== deletingUserId; else deletionSpinner"-->
-<!--          >delete</mat-icon-->
-<!--        >-->
-<!--        <ng-template #deletionSpinner>-->
-<!--          <app-spinner></app-spinner>-->
-<!--        </ng-template>-->
-
-<!--        <mat-menu #deleteConfirmationMenu="matMenu">-->
-<!--          <app-confirmation-menu-->
-<!--            [title]="'Delete user?'"-->
-<!--            [message]="'Are you sure you want to delete this user?!'"-->
-<!--            (confirmClick)="deleteUser.emit(element.id)"-->
-<!--          ></app-confirmation-menu>-->
-<!--        </mat-menu>-->
-<!--      </button>-->
     </td>
   </ng-container>
 

@@ -33,6 +33,7 @@ import { DELETE_MESSAGE_TOKEN } from '../../../../components/delete-button/delet
 export class UsersTableComponent implements OnInit, AfterViewInit {
   @Input() set users(value: UserInfo[]) {
     this.dataSource = new MatTableDataSource<UserInfo>(value);
+    this.dataSource.paginator = this.paginator;
   }
   @Input() deletingUserId;
 
@@ -58,7 +59,6 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
   }
 
   filterUsersByQuery(query: string) {

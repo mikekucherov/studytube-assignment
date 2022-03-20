@@ -125,6 +125,54 @@ export class RequestService {
           }
         ],
       },
+      {
+        id: '4',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 4',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
+      {
+        id: '5',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 5',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
+      {
+        id: '6',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 6',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
+      {
+        id: '7',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 7',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
+      {
+        id: '8',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 8',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
+      {
+        id: '9',
+        avatar:
+          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+        fullname: 'User 9',
+        email: 'mikekucherov92@gmail.com',
+        learnings: [],
+      },
     ]);
   }
 

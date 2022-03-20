@@ -20,9 +20,9 @@
     </div>
   </div>
 
-  <mat-chip *ngIf="learning.users?.length" class="learning-card_users"
+  <mat-chip class="learning-card_users"
             (click)="editUsersList.emit(learning.users)"
-    >{{ learning.users?.length }} users</mat-chip
+    >{{ learning.users?.length || 0 }} user{{ learning.users?.length > 1 ? 's' : '' }}</mat-chip
   >
 
   <div
@@ -31,7 +31,7 @@
       learning.status === learningStatus.Active
     "
   >
-    <mat-chip [matMenuTriggerFor]="statusMenu">{{
+    <mat-chip [matMenuTriggerFor]="statusMenu" class="learning-card_status__button">{{
       learning.status === learningStatus.Active ? "Active" : "Inactive"
     }}</mat-chip>
 

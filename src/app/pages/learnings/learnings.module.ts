@@ -11,6 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { EditUsersDialogComponent } from './components/edit-users-dialog/edit-users-dialog.component';
 import {ClickOutsideModule} from "ng-click-outside";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ClickOutsideModule} from "ng-click-outside";
     SharedModule,
     MatChipsModule,
     MatMenuModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    MatCheckboxModule
   ],
 })
 export class LearningsModule {}

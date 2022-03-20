@@ -10,6 +10,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatButtonModule} from "@angular/material/button";
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { InputComponent } from './input/input.component';
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import {MatMenuModule} from "@angular/material/menu";
     ConfirmationMenuComponent,
     SpinnerComponent,
     DeleteButtonComponent,
+    InputComponent,
   ],
   exports: [
     NavigationBarComponent,
@@ -25,7 +29,8 @@ import {MatMenuModule} from "@angular/material/menu";
     SpinnerComponent,
     ConfirmationMenuComponent,
     DeleteButtonComponent,
+    InputComponent,
   ],
-    imports: [CommonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule, MatButtonModule, MatMenuModule],
+  imports: [CommonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule, MatButtonModule, MatMenuModule, FormsModule, MatInputModule],
 })
 export class ComponentsModule {}

@@ -3,6 +3,8 @@
 .users-table {
   width: 100%;
 
+  @include space(padding, vr-1);
+
   ::ng-deep td, th {
     border: none;
   }
@@ -12,21 +14,7 @@
   }
 
   &_search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 30rem;
-
-    box-shadow: $drop-shadow;
-    border-radius: $border-radius-large;
-
-    @include space(padding, vr-1);
-    @include space(padding-left, vr-2);
     @include space(margin-bottom, vr-2);
-
-    @include font($typography-p1...);
   }
 
   &_avatar {
