@@ -1,0 +1,22 @@
+<button
+  mat-mini-fab
+  color="accent"
+  aria-label="Delete user button"
+  [matMenuTriggerFor]="isConfirmation ? deleteConfirmationMenu : null"
+  (click)="buttonClickHandler(isConfirmation)"
+>
+  <mat-icon *ngIf="!isLoading; else deletionSpinner"
+  >delete</mat-icon
+  >
+  <ng-template #deletionSpinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+
+  <mat-menu #deleteConfirmationMenu="matMenu">
+    <app-confirmation-menu
+      [title]="deleteMessage.title"
+      [message]="deleteMessage.message"
+      (confirmClick)="confirmationClick.emit()"
+    ></app-confirmation-menu>
+  </mat-menu>
+</button>

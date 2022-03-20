@@ -1,0 +1,12 @@
+@import "./src/assets/vars";
+
+.users-dialog {
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 200px);
+
+  width: 400px;
+  height: 600px;
+
+  @include space(padding, vr-3);
+}
