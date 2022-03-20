@@ -2,7 +2,8 @@
 
 .users-table {
 
-  @include space(padding, vr-1);
+  @include space(padding-left, vr-1);
+  @include space(padding-right, vr-1);
 
   ::ng-deep td, th {
     border: none;

@@ -12,20 +12,32 @@
         | call: filterLearningsByQuery:params.searchValue as filteredLearnings
     "
   >
-    <app-input
-      [value]="params.searchValue"
-      [type]="'search'"
-      (valueChange)="searchValue$.next($event)"
-      class="learnings-table_search"
-    ></app-input>
-<!--    <div class="learnings-table_cards-container scroll-container">-->
-      <app-learning-archive-card
-        *ngFor="let learning of filteredLearnings | call: performPagination : pageIndex : pageSize"
-        [learning]="learning"
-        (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
-        (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
-      ></app-learning-archive-card>
-<!--    </div>-->
+    <div class="learnings-table_top-bar blurry-background">
+      <app-input
+        [value]="params.searchValue"
+        [type]="'search'"
+        (valueChange)="searchValue$.next($event)"
+      ></app-input>
+      <button
+        mat-fab
+        color="accent"
+        aria-label="Add new learning button"
+        matTooltip="Add new learning"
+        [matTooltipShowDelay]="1500"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <app-learning-archive-card
+      *ngFor="
+        let learning of filteredLearnings
+          | call: performPagination:pageIndex:pageSize
+      "
+      [learning]="learning"
+      (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
+      (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
+    ></app-learning-archive-card>
 
     <app-edit-users-dialog
       *ngIf="params.editableLearningId"
@@ -41,7 +53,7 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
       (page)="changePage($event)"
       aria-label="Select page"
-      class="learnings-table_paginator"
+      class="learnings-table_paginator blurry-background"
     >
     </mat-paginator>
   </ng-container>
