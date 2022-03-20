@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EditUsersDialogComponent } from './components/edit-users-dialog/edit-users-dialog.component';
 import {ClickOutsideModule} from "ng-click-outside";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -20,16 +21,17 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     LearningArchiveCardComponent,
     EditUsersDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    LearningsRoutingModule,
-    ComponentsModule,
-    MatIconModule,
-    SharedModule,
-    MatChipsModule,
-    MatMenuModule,
-    ClickOutsideModule,
-    MatCheckboxModule
-  ],
+    imports: [
+        CommonModule,
+        LearningsRoutingModule,
+        ComponentsModule,
+        MatIconModule,
+        SharedModule,
+        MatChipsModule,
+        MatMenuModule,
+        ClickOutsideModule,
+        MatCheckboxModule,
+        MatPaginatorModule
+    ],
 })
 export class LearningsModule {}

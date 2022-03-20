@@ -5,12 +5,15 @@ import {
   Input,
   Output,
   EventEmitter,
+  inject,
 } from '@angular/core';
 import { LearningInfo } from '../../learnings.model';
 import { DELETE_MESSAGE_TOKEN } from '../../../../components/delete-button/delete.token';
 import { BehaviorSubject } from 'rxjs';
 import { UserInfo, UserSelection, UserShort } from '../../../users/users.model';
 import { isArraysEqual } from '../../../../shared/utils';
+import { LEARNINGS_SEARCH_TOKEN } from '../../learnings.token';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-learnings-table',
@@ -23,6 +26,13 @@ import { isArraysEqual } from '../../../../shared/utils';
       useValue: {
         title: 'Delete learning?',
         message: 'Do you want to delete learning? And detach users from it?',
+      },
+    },
+    {
+      provide: LEARNINGS_SEARCH_TOKEN,
+      useFactory: () => {
+        const tableComponent = inject(LearningsTableComponent);
+        return tableComponent.searchValue$;
       },
     },
   ],
@@ -38,7 +48,10 @@ export class LearningsTableComponent implements OnInit {
   editableLearningsUsers$: BehaviorSubject<UserSelection[]> =
     new BehaviorSubject([]);
 
-  searchValue = '';
+  pageIndex = 0;
+  pageSize = 5;
+
+  searchValue$ = new BehaviorSubject('');
 
   constructor() {}
 
@@ -94,5 +107,17 @@ export class LearningsTableComponent implements OnInit {
     return learnings.filter((learning) =>
       learning.title.toLowerCase().match(query.toLowerCase())
     );
+  }
+
+  performPagination(
+    learnings: LearningInfo[],
+    pageIndex: number,
+    pageSize: number
+  ) {
+    return learnings.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+  }
+
+  changePage(pageInfo: PageEvent) {
+    this.pageIndex = pageInfo.pageIndex;
   }
 }

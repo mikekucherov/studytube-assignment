@@ -1,25 +1,48 @@
 <div
   *init="{
     editableLearningId: editableLearningId$ | async,
-    editableLearningUsers: editableLearningsUsers$ | async
+    editableLearningUsers: editableLearningsUsers$ | async,
+    searchValue: searchValue$ | async
   } as params"
   class="learnings-table scroll-container"
 >
-  <app-input [(value)]="searchValue" [type]="'search'"></app-input>
-  <app-learning-archive-card
-    *ngFor="
-      let learning of learnings | call: filterLearningsByQuery:searchValue
+  <ng-container
+    *init="
+      learnings
+        | call: filterLearningsByQuery:params.searchValue as filteredLearnings
     "
-    [learning]="learning"
-    (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
-    (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
-  ></app-learning-archive-card>
+  >
+    <app-input
+      [value]="params.searchValue"
+      [type]="'search'"
+      (valueChange)="searchValue$.next($event)"
+      class="learnings-table_search"
+    ></app-input>
+<!--    <div class="learnings-table_cards-container scroll-container">-->
+      <app-learning-archive-card
+        *ngFor="let learning of filteredLearnings | call: performPagination : pageIndex : pageSize"
+        [learning]="learning"
+        (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
+        (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
+      ></app-learning-archive-card>
+<!--    </div>-->
 
-  <app-edit-users-dialog
-    *ngIf="params.editableLearningId"
-    [users]="params.editableLearningUsers"
-    (closeDialog)="
-      updateSelectedUsers($event, params.editableLearningId, learnings)
-    "
-  ></app-edit-users-dialog>
+    <app-edit-users-dialog
+      *ngIf="params.editableLearningId"
+      [users]="params.editableLearningUsers"
+      (closeDialog)="
+        updateSelectedUsers($event, params.editableLearningId, learnings)
+      "
+    ></app-edit-users-dialog>
+
+    <mat-paginator
+      [length]="learnings.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="changePage($event)"
+      aria-label="Select page"
+      class="learnings-table_paginator"
+    >
+    </mat-paginator>
+  </ng-container>
 </div>

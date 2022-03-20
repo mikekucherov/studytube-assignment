@@ -1,4 +1,7 @@
-<div class="learning-card shadowed-container">
+<div
+  *init="searchValue$ | async as searchValue"
+  class="learning-card shadowed-container"
+>
   <div class="learning-card--left">
     <img
       src="{{ learning.cover }}"
@@ -7,9 +10,10 @@
     />
 
     <div class="learning-card_info">
-      <p class="learning-card_title">
-        {{ learning.title }}
-      </p>
+      <p
+        class="learning-card_title"
+        [innerHTML]="learning.title | highlight: searchValue"
+      ></p>
       <p class="learning-card_description">
         {{ learning.description }}
       </p>
@@ -20,9 +24,12 @@
     </div>
   </div>
 
-  <mat-chip class="learning-card_users"
-            (click)="editUsersList.emit(learning.users)"
-    >{{ learning.users?.length || 0 }} user{{ learning.users?.length > 1 ? 's' : '' }}</mat-chip
+  <mat-chip
+    class="learning-card_users"
+    (click)="editUsersList.emit(learning.users)"
+    >{{ learning.users?.length || 0 }} user{{
+      learning.users?.length > 1 ? "s" : ""
+    }}</mat-chip
   >
 
   <div
@@ -31,9 +38,13 @@
       learning.status === learningStatus.Active
     "
   >
-    <mat-chip [matMenuTriggerFor]="statusMenu" class="learning-card_status__button">{{
-      learning.status === learningStatus.Active ? "Active" : "Inactive"
-    }}</mat-chip>
+    <mat-chip
+      [matMenuTriggerFor]="statusMenu"
+      class="learning-card_status__button"
+      >{{
+        learning.status === learningStatus.Active ? "Active" : "Inactive"
+      }}</mat-chip
+    >
 
     <mat-menu #statusMenu="matMenu">
       <button
@@ -51,7 +62,5 @@
     </mat-menu>
   </div>
 
-  <app-delete-button
-    [isConfirmation]="true"
-  ></app-delete-button>
+  <app-delete-button [isConfirmation]="true"></app-delete-button>
 </div>

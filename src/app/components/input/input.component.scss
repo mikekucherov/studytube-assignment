@@ -11,6 +11,8 @@
   box-shadow: $drop-shadow;
   border-radius: $border-radius-large;
 
+  background-color: $white;
+
   @include space(padding, vr-2);
   @include space(padding-left, vr-2);
 

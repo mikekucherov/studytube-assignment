@@ -1,5 +1,7 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, Inject} from '@angular/core';
 import {LearningInfo, LearningStatus} from "../../learnings.model";
+import {LEARNINGS_SEARCH_TOKEN} from "../../learnings.token";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-learning-archive-card',
@@ -16,7 +18,7 @@ export class LearningArchiveCardComponent implements OnInit {
 
   learningStatus = LearningStatus;
 
-  constructor() { }
+  constructor(@Inject(LEARNINGS_SEARCH_TOKEN) public searchValue$: BehaviorSubject<string>) { }
 
   ngOnInit(): void {
   }
