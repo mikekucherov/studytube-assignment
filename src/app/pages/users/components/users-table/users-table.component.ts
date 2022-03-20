@@ -2,21 +2,33 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef, EventEmitter,
+  ElementRef,
+  EventEmitter,
   Input,
-  OnInit, Output,
+  OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { UserInfo } from '../../users.model';
-import {LearningShort} from "../../../learnings/learnings.model";
+import { LearningShort } from '../../../learnings/learnings.model';
+import { DELETE_MESSAGE_TOKEN } from '../../../../components/delete-button/delete.token';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: DELETE_MESSAGE_TOKEN,
+      useValue: {
+        title: 'Delete user?',
+        message: 'Are you sure you want to delete this user?!',
+      },
+    },
+  ],
 })
 export class UsersTableComponent implements OnInit, AfterViewInit {
   @Input() set users(value: UserInfo[]) {
@@ -55,6 +67,6 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
   }
 
   sortLearnings(learnings: LearningShort[]) {
-    return learnings.sort((a, b) => a.title > b.title ? 1 : -1);
+    return learnings.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
 }

@@ -1,9 +1,11 @@
-import {LearningShort} from "../learnings/learnings.model";
+import { LearningShort } from '../learnings/learnings.model';
 
-export interface UserInfo {
+export type UserInfo = {
   avatar: string;
   fullname: string;
   email: string;
   id: string;
   learnings: LearningShort[];
-}
+};
+
+export type UserShort = Pick<UserInfo, 'avatar' | 'fullname' | 'id'>;

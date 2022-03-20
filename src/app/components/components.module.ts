@@ -8,6 +8,8 @@ import { ConfirmationMenuComponent } from './confirmation-menu/confirmation-menu
 import { SpinnerComponent } from './spinner/spinner.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatButtonModule} from "@angular/material/button";
+import { DeleteButtonComponent } from './delete-button/delete-button.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import {MatButtonModule} from "@angular/material/button";
     LearningCardComponent,
     ConfirmationMenuComponent,
     SpinnerComponent,
+    DeleteButtonComponent,
   ],
   exports: [
     NavigationBarComponent,
     LearningCardComponent,
     SpinnerComponent,
     ConfirmationMenuComponent,
+    DeleteButtonComponent,
   ],
-  imports: [CommonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule, MatButtonModule],
+    imports: [CommonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule, MatButtonModule, MatMenuModule],
 })
 export class ComponentsModule {}

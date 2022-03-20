@@ -1,7 +1,20 @@
-<div class="learnings-table scroll-container">
+<div
+  *init="{
+    editableLearningId: editableLearningId$ | async,
+    users: editableLearningsUsers$ | async
+  } as params"
+  class="learnings-table scroll-container"
+>
   <app-learning-archive-card
     *ngFor="let learning of learnings"
     [learning]="learning"
     (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
+    (editUsersList)="openUsersDialog($event, learning.id)"
   ></app-learning-archive-card>
+
+  <app-edit-users-dialog
+    *ngIf="params.editableLearningId"
+    [users]="params.users"
+    (closeDialog)="editableLearningId$.next(null)"
+  ></app-edit-users-dialog>
 </div>

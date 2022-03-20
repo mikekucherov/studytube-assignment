@@ -46,8 +46,12 @@
     @include font($typography-p1...);
   }
 
+  &_users {
+    cursor: pointer;
+  }
+
   &_status {
-    justify-self: flex-end;
+    //justify-self: flex-end;
 
     cursor: pointer;
 

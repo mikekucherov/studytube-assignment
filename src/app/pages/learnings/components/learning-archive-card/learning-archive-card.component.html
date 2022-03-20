@@ -20,6 +20,11 @@
     </div>
   </div>
 
+  <mat-chip *ngIf="learning.users?.length" class="learning-card_users"
+            (click)="editUsersList.emit(learning.users)"
+    >{{ learning.users?.length }} users</mat-chip
+  >
+
   <div
     class="learning-card_status"
     [class.learning-card_status--active]="
@@ -39,10 +44,14 @@
       </button>
       <button
         mat-menu-item
-        (click)="changeLearningStatus.emit(learningStatus.Archive)"
+        (click)="changeLearningStatus.emit(learningStatus.Inactive)"
       >
         Inactive
       </button>
     </mat-menu>
   </div>
+
+  <app-delete-button
+    [isConfirmation]="true"
+  ></app-delete-button>
 </div>

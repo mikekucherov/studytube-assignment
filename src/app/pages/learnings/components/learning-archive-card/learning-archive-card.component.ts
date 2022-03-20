@@ -12,6 +12,7 @@ export class LearningArchiveCardComponent implements OnInit {
   @Input() learning: LearningInfo;
 
   @Output() changeLearningStatus = new EventEmitter();
+  @Output() editUsersList = new EventEmitter();
 
   learningStatus = LearningStatus;
 

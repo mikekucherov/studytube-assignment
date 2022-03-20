@@ -15,6 +15,7 @@ export class RequestService {
   constructor(private http: HttpClient) { }
 
   getUsersList(): Observable<UserInfo[]> {
+    // return this.http.get(this.BASE_API_URL + '/users') as Observable<UserInfo[]>;
     return of([
       {
         id: '1',
@@ -62,15 +63,30 @@ export class RequestService {
           {
             id: '1',
             title: 'Angular',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active,
           },
           {
             id: '2',
-            title: 'Ruby',
+            title: 'RxJs',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active
           },
           {
             id: '3',
-            title: 'RxJs',
-          },
+            title: 'Ruby',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active
+          }
         ],
       },
       {
@@ -83,15 +99,30 @@ export class RequestService {
           {
             id: '1',
             title: 'Angular',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active,
           },
           {
             id: '2',
-            title: 'Ruby',
+            title: 'RxJs',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active
           },
           {
             id: '3',
-            title: 'RxJs',
-          },
+            title: 'Ruby',
+            description: 'The best front-end framework course',
+            duration: '12 h',
+            cover:
+              'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
+            status: LearningStatus.Active
+          }
         ],
       },
     ]);
@@ -107,6 +138,13 @@ export class RequestService {
         cover:
           'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg',
         status: LearningStatus.Active,
+        users: [
+          {
+            id: '1',
+            fullname: 'Mikhail',
+            avatar: 'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png'
+          }
+        ]
       },
       {
         id: '2',

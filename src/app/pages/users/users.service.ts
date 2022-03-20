@@ -17,6 +17,7 @@ export class UsersService {
 
   deletedUserId$ = new BehaviorSubject(null);
 
+  // TODO Create a Notification Module as a wrapper above material service
   constructor(
     private usersQuery: UsersQuery,
     private usersStore: UsersStore,
