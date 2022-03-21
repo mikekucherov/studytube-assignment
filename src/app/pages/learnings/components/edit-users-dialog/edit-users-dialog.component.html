@@ -1,6 +1,6 @@
 <div
   *init="{ selectedUsers: selectedUsers$ | async } as params"
-  class="users-dialog shadowed-container"
+  class="users-dialog shadowed-container evaluation-3"
   (clickOutside)="closeDialog.emit(params.selectedUsers)"
 >
   <p class="users-dialog_hint"
@@ -27,4 +27,4 @@
     </div>
   </div>
 </div>
-<div class="users-dialog_overlay"></div>
+<div class="users-dialog_overlay evaluation-2"></div>

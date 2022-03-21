@@ -32,6 +32,25 @@ export class LearningsService {
     });
   }
 
+  async fakeAddLearning(learningInfo: LearningInfo) {
+    const currentLearnings = this.learningsStore.getValue().learnings;
+
+    const learnings = await of([
+      ...currentLearnings,
+      {
+        ...learningInfo,
+        id: currentLearnings.length.toString(),
+        status: LearningStatus.Active,
+      },
+    ])
+      .pipe(delay(2000), take(1))
+      .toPromise();
+
+    this.learningsStore.update({
+      learnings,
+    });
+  }
+
   async fakeUpdateLearningStatus(
     learningInfo: Pick<LearningInfo, 'id' | 'status'>
   ) {

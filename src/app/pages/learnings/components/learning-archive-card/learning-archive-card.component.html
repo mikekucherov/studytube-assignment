@@ -3,11 +3,12 @@
   class="learning-card shadowed-container"
 >
   <div class="learning-card--left">
-    <img
-      src="{{ learning.cover }}"
-      alt="{{ learning.title }} cover"
+    <app-avatar
+      [image]="learning.cover"
+      [altLabel]="learning.title + ' cover'"
+      [size]="'l'"
       class="learning-card_cover"
-    />
+    ></app-avatar>
 
     <div class="learning-card_info">
       <p
@@ -24,13 +25,15 @@
     </div>
   </div>
 
-  <mat-chip
-    class="learning-card_users"
-    (click)="editUsersList.emit(learning.users)"
+  <div class="learning-card_users">
+    <mat-chip
+      class="learning-card_users__button"
+      (click)="editUsersList.emit(learning.users)"
     >{{ learning.users?.length || 0 }} user{{
       learning.users?.length > 1 ? "s" : ""
-    }}</mat-chip
-  >
+      }}</mat-chip
+    >
+  </div>
 
   <div
     class="learning-card_status"

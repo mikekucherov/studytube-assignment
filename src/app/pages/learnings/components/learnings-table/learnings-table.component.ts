@@ -43,6 +43,7 @@ export class LearningsTableComponent implements OnInit {
 
   @Output() changeLearningStatus = new EventEmitter();
   @Output() changeLearningUsers = new EventEmitter();
+  @Output() createNewLearning = new EventEmitter();
 
   editableLearningId$: BehaviorSubject<string> = new BehaviorSubject('');
   editableLearningsUsers$: BehaviorSubject<UserSelection[]> =
@@ -104,9 +105,11 @@ export class LearningsTableComponent implements OnInit {
   }
 
   filterLearningsByQuery(learnings: LearningInfo[], query: string) {
-    return learnings.filter((learning) =>
-      learning.title.toLowerCase().match(query.toLowerCase())
-    );
+    return query.length
+      ? learnings.filter((learning) =>
+          learning.title.toLowerCase().match(query.toLowerCase())
+        )
+      : learnings;
   }
 
   performPagination(

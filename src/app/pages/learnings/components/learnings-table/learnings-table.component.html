@@ -12,18 +12,24 @@
         | call: filterLearningsByQuery:params.searchValue as filteredLearnings
     "
   >
-    <div class="learnings-table_top-bar blurry-background">
+    <div class="learnings-table_top-bar blurry-background evaluation-1">
       <app-input
+        class="learnings-table_top-bar__search"
         [value]="params.searchValue"
-        [type]="'search'"
+        [placeholder]="'Search'"
         (valueChange)="searchValue$.next($event)"
-      ></app-input>
+      >
+        <ng-container icon>
+          <mat-icon color="accent">search</mat-icon>
+        </ng-container>
+      </app-input>
       <button
         mat-fab
         color="accent"
         aria-label="Add new learning button"
         matTooltip="Add new learning"
         [matTooltipShowDelay]="1500"
+        (click)="createNewLearning.emit()"
       >
         <mat-icon>add</mat-icon>
       </button>

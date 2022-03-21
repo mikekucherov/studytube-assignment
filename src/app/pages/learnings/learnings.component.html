@@ -1,10 +1,21 @@
 <ng-container
-  *init="{ learnings: learnings$ | async, users: users$ | async } as params"
+  *init="{
+    learnings: learnings$ | async,
+    users: users$ | async,
+    isEditLearningModal: isEditLearningModal$ | async
+  } as params"
 >
   <app-learnings-table
     [learnings]="params.learnings"
     [allUsers]="params.users"
     (changeLearningStatus)="changeLearningStatusHandler($event)"
     (changeLearningUsers)="changeLearningUsersHandler($event, params.users)"
+    (createNewLearning)="editLearning('new')"
   ></app-learnings-table>
+
+  <app-create-learning
+    *ngIf="params.isEditLearningModal"
+    (submitForm)="cancelLearningEditing()"
+    (closeForm)="cancelLearningEditing()"
+  ></app-create-learning>
 </ng-container>

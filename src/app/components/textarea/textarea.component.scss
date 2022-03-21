@@ -1,0 +1,36 @@
+@import "./src/assets/vars";
+
+.textarea {
+  position: relative;
+  resize: horizontal;
+
+  @include space(padding, vr-2);
+  @include space(padding-bottom, vr-1);
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: $black-40;
+    }
+
+    @include font($typography-p1...);
+  }
+
+  &_icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -1,0 +1,6 @@
+<img *ngIf="image; else defaultAvatar" src="{{ image }}" alt="{{ altLabel }}" class="avatar avatar--{{ size }}" />
+<ng-template #defaultAvatar>
+  <div class="avatar avatar--{{ size }} avatar--default">
+    <p>{{ altLabel | call : generateAvatar}}</p>
+  </div>
+</ng-template>

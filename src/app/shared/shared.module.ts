@@ -7,6 +7,6 @@ import { HighlightPipe } from './highlight.pipe';
 @NgModule({
   declarations: [CallPipe, InitDirective, HighlightPipe],
   imports: [CommonModule],
-    exports: [CallPipe, InitDirective, HighlightPipe],
+  exports: [CallPipe, InitDirective, HighlightPipe],
 })
 export class SharedModule {}

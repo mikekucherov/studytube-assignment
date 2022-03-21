@@ -1,0 +1,41 @@
+@import "./src/assets/vars";
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+  border-radius: 50%;
+
+  color: $white;
+
+  &--s {
+    width: 32px;
+    height: 32px;
+
+    @include font($typography-p1...);
+  }
+
+  &--m {
+    width: 48px;
+    height: 48px;
+
+    @include font($typography-h3...);
+  }
+
+  &--l {
+    width: 72px;
+    height: 72px;
+
+    @include font($typography-h1...);
+  }
+
+  &--default {
+    background-color: $accent;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

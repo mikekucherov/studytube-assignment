@@ -12,15 +12,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    flex: 3;
   }
 
   &_cover {
-    width: 72px;
-    height: 72px;
-
-    background-size: cover;
-    border-radius: 50%;
-
     @include space(margin-right, vr-3);
   }
 
@@ -47,10 +43,17 @@
   }
 
   &_users {
-    cursor: pointer;
+    display: flex;
+    flex: 1;
+
+    &__button {
+      cursor: pointer;
+    }
   }
 
   &_status {
+    display: flex;
+    flex: 1;
 
     .mat-chip {
       background-color: $red-40;

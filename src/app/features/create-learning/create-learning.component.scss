@@ -1,0 +1,35 @@
+@import "./src/assets/vars";
+
+.create-learning {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+
+  width: 40%;
+  //height: 50%;
+
+  @include space(padding, vr-3);
+
+  &_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $black-40;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+
+    @include space(gap, vr-1);
+  }
+
+  &_submit-button {
+    display: flex;
+    align-self: center;
+  }
+}

@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { LearningsService } from './learnings.service';
 import { LearningStatus } from './learnings.model';
 import { UsersService } from '../users/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import {map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-learnings',
@@ -12,10 +14,15 @@ import { UsersService } from '../users/users.service';
 export class LearningsComponent implements OnInit {
   learnings$ = this.learningsService.learnings$;
   users$ = this.usersService.users$;
+  isEditLearningModal$ = this.activatedRoute.queryParamMap.pipe(
+    map((queryParamMap) => queryParamMap.get('learning'))
+  );
 
   constructor(
     private learningsService: LearningsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,5 +55,25 @@ export class LearningsComponent implements OnInit {
       },
       users
     );
+  }
+
+  editLearning(learningId: string | 'new' | null) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        learning: learningId,
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  cancelLearningEditing() {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        learning: null
+      },
+      queryParamsHandling: 'merge'
+    })
   }
 }

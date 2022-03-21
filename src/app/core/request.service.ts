@@ -92,7 +92,7 @@ export class RequestService {
       {
         id: '3',
         avatar:
-          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+          '',
         fullname: 'Igor Kucherov',
         email: 'igor@gmail.com',
         learnings: [
@@ -168,7 +168,7 @@ export class RequestService {
       {
         id: '9',
         avatar:
-          'https://www.materiell.com/wp-content/uploads/2015/03/bill-full.png',
+          '',
         fullname: 'User 9',
         email: 'mikekucherov92@gmail.com',
         learnings: [],
@@ -178,6 +178,15 @@ export class RequestService {
 
   getLearningsList(): Observable<LearningInfo[]> {
     return of([
+      {
+        id: '0',
+        title: '123',
+        description: '123',
+        duration: '12 h',
+        cover: '',
+        status: LearningStatus.Active,
+        users: []
+      },
       {
         id: '1',
         title: 'Angular',

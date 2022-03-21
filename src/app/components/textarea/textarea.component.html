@@ -1,25 +1,22 @@
-<div class="input">
-  <ng-container *ngIf="fGroup; else basicInput" [formGroup]="fGroup">
-    <input
-      matInput
-      placeholder="{{ placeholder }}"
+<div class="textarea shadowed-container">
+  <ng-container *ngIf="fGroup; else basicTextarea" [formGroup]="fGroup">
+    <textarea
+      [placeholder]="placeholder"
       [formControlName]="fControlName"
       [(ngModel)]="value"
-    />
+    ></textarea>
   </ng-container>
 
-  <ng-template #basicInput>
-    <input
-      matInput
-      placeholder="{{ placeholder }}"
+  <ng-template #basicTextarea>
+    <textarea
+      [placeholder]="placeholder"
       [(ngModel)]="value"
       (ngModelChange)="valueChange.emit($event)"
-    />
+    ></textarea>
   </ng-template>
 
-
   <div
-    class="input_icon"
+    class="textarea_icon"
     *ngIf="isAllowClear && !value?.length; else clearButton"
   >
     <ng-content select="[icon]"></ng-content>
@@ -28,8 +25,8 @@
     <button
       mat-icon-button
       color="accent"
-      aria-label="Input clear button"
-      class="input_icon"
+      aria-label="Textarea clear button"
+      class="textarea_icon"
       (click)="value = ''; valueChange.emit('')"
     >
       <mat-icon>cancel</mat-icon>

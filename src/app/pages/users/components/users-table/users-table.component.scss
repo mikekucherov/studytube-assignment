@@ -21,16 +21,8 @@
     @include space(margin-bottom, vr-2);
   }
 
-  &_avatar {
-    width: 32px;
-    height: 32px;
-  }
-
   &_text-cell {
     @include font($typography-p1...);
-  }
-
-  &_row {
   }
 
   &_edit-column {

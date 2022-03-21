@@ -6,8 +6,6 @@
   align-items: center;
   justify-content: space-between;
 
-  width: 30rem;
-
   box-shadow: $drop-shadow;
   border-radius: $border-radius-large;
 
@@ -18,7 +16,7 @@
 
   @include font($typography-p1...);
 
-  &_button {
+  &_icon {
     display: flex;
     justify-content: center;
     align-items: center;

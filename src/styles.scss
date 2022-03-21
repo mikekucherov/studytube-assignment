@@ -6,7 +6,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mark {
   padding: 0 1px;
-  //font-weight: 400;
   background-color: $black-10;
   border-radius: 2px;
 }
@@ -55,4 +54,16 @@ mark {
     filter: blur(4px);
     -webkit-filter: blur(4px);
   }
+}
+
+.evaluation-1 {
+  z-index: 1;
+}
+
+.evaluation-2 {
+  z-index: 2;
+}
+
+.evaluation-3 {
+  z-index: 3;
 }

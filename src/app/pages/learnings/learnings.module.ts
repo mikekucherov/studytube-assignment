@@ -15,6 +15,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {CreateLearningModule} from "../../features/create-learning/create-learning.module";
 
 @NgModule({
   declarations: [
@@ -23,19 +24,20 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     LearningArchiveCardComponent,
     EditUsersDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    LearningsRoutingModule,
-    ComponentsModule,
-    MatIconModule,
-    SharedModule,
-    MatChipsModule,
-    MatMenuModule,
-    ClickOutsideModule,
-    MatCheckboxModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatTooltipModule
-  ],
+    imports: [
+        CommonModule,
+        LearningsRoutingModule,
+        ComponentsModule,
+        MatIconModule,
+        SharedModule,
+        MatChipsModule,
+        MatMenuModule,
+        ClickOutsideModule,
+        MatCheckboxModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        MatTooltipModule,
+        CreateLearningModule
+    ],
 })
 export class LearningsModule {}
