@@ -39,7 +39,7 @@ export class LearningsService {
       ...currentLearnings,
       {
         ...learningInfo,
-        id: currentLearnings.length.toString(),
+        id: (currentLearnings.length + 1).toString(),
         status: LearningStatus.Active,
       },
     ])

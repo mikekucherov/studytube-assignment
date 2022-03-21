@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { UsersQuery } from './state/users.query';
 import { UsersStore } from './state/users.store';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { UserInfo } from './users.model';
 import { delay, take, tap } from 'rxjs/operators';
 import { RequestService } from '../../core/request.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LearningStatus } from '../learnings/learnings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +50,24 @@ export class UsersService {
     setTimeout(() => {
       this.notification.open('Changes saved');
     }, 1000);
+  }
+
+  async createUser(userInfo) {
+    const currentUsers = this.usersStore.getValue().users;
+
+    const users = await of([
+      ...currentUsers,
+      {
+        ...userInfo,
+        id: (currentUsers.length + 1).toString(),
+      },
+    ])
+      .pipe(delay(2000), take(1))
+      .toPromise();
+
+    this.usersStore.update({
+      users,
+    });
   }
 
   async fakeDeleteUser(userId) {

@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { ComponentsModule } from '../../components/components.module';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {EditUserModule} from "../../features/edit-user/edit-user.module";
 
 @NgModule({
   declarations: [UsersComponent, UsersTableComponent],
@@ -29,6 +31,8 @@ import { ComponentsModule } from '../../components/components.module';
     MatInputModule,
     FormsModule,
     MatMenuModule,
+    MatTooltipModule,
+    EditUserModule,
   ],
 })
 export class UsersModule {}

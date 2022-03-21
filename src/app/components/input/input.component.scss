@@ -1,6 +1,7 @@
 @import "./src/assets/vars";
 
 .input {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +17,15 @@
 
   @include font($typography-p1...);
 
+  &_error-message {
+    position: absolute;
+    bottom: -42px;
+
+    color: $red;
+
+    @include font($typography-p1...);
+  }
+
   &_icon {
     display: flex;
     justify-content: center;
@@ -23,5 +33,9 @@
 
     width: 24px;
     height: 24px;
+  }
+
+  &--error {
+    box-shadow: 2px 2px 18px $red-40;
   }
 }

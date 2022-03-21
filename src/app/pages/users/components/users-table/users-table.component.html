@@ -1,12 +1,25 @@
 <div class="users-table">
-  <div class="users-table_search">
-    <app-input
-      [value]="searchValue"
-      [placeholder]="'Search'"
-      [isAllowClear]="true"
-      (valueChange)="filterUsersByQuery($event)"
-    ></app-input>
+  <div class="users-table_top-bar">
+    <div class="users-table_top-bar__search">
+      <app-input
+        [value]="searchValue"
+        [placeholder]="'Search'"
+        [isAllowClear]="true"
+        (valueChange)="filterUsersByQuery($event)"
+      ></app-input>
+    </div>
+    <button
+      mat-fab
+      color="accent"
+      aria-label="Add new user button"
+      matTooltip="Add user"
+      [matTooltipShowDelay]="1500"
+      (click)="createUser.emit()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
+
 
   <table class="users-table_container" mat-table [dataSource]="dataSource">
     <!-- Avatar Column -->

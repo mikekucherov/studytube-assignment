@@ -1,4 +1,6 @@
-<div class="input">
+<div class="input"
+     [class.input--error]="isError"
+>
   <ng-container *ngIf="fGroup; else basicInput" [formGroup]="fGroup">
     <input
       matInput
@@ -16,6 +18,10 @@
       (ngModelChange)="valueChange.emit($event)"
     />
   </ng-template>
+
+  <p *ngIf="isError" class="input_error-message">
+    {{ errorMessage }}
+  </p>
 
 
   <div

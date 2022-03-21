@@ -39,6 +39,7 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
 
   @Output() editLearnings = new EventEmitter();
   @Output() deleteUser = new EventEmitter();
+  @Output() createUser = new EventEmitter();
 
   displayedColumns: string[] = [
     'avatar',
@@ -67,6 +68,6 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
   }
 
   sortLearnings(learnings: LearningShort[]) {
-    return learnings.sort((a, b) => (a.title > b.title ? 1 : -1));
+    return learnings?.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
 }

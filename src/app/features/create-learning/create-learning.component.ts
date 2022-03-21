@@ -30,14 +30,9 @@ export class CreateLearningComponent implements OnInit {
       duration: [''],
       cover: ['']
     });
-
-    // this.learningForm.valueChanges.subscribe((v) => {
-    //   console.log('CHANGES', v);
-    // })
   }
 
   onLoadCover(event) {
-
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.learningForm.patchValue({

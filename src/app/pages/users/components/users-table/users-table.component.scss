@@ -17,8 +17,17 @@
     width: 100%;
   }
 
-  &_search {
-    @include space(margin-bottom, vr-2);
+  &_top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__search {
+      width: 30rem;
+
+      @include space(margin-bottom, vr-2);
+    }
   }
 
   &_text-cell {

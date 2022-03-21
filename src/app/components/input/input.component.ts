@@ -17,6 +17,8 @@ import {FormGroup} from "@angular/forms";
 export class InputComponent implements OnInit {
   @Input() value = '';
   @Input() isAllowClear = true;
+  @Input() isError = false;
+  @Input() errorMessage = '';
   @Input() fControlName = '';
   @Input() fGroup: FormGroup = null;
   @Input() placeholder = '';

@@ -1,0 +1,73 @@
+<ng-container *init="{ isConfirmClosing: isConfirmClosing$ | async } as params">
+  <div
+    class="edit-user shadowed-container evaluation-3"
+    [class.edit-user--confirm]="params.isConfirmClosing"
+  >
+    <p *ngIf="params.isConfirmClosing" class="edit-user_hint">
+      Are you sure you want close form without saving?
+    </p>
+    <form
+      class="edit-user_form"
+      [formGroup]="userForm"
+      (ngSubmit)="createUser(userForm)"
+    >
+      <app-input
+        [placeholder]="'Full name'"
+        [fGroup]="userForm"
+        [fControlName]="'fullname'"
+        [isError]="
+          userForm.controls.fullname.touched &&
+          userForm.controls.fullname.invalid
+        "
+        [errorMessage]="'Name is required'"
+      >
+        <ng-container icon>
+          <mat-icon color="accent"> person </mat-icon>
+        </ng-container>
+      </app-input>
+
+      <app-input
+        [placeholder]="'E-mail'"
+        [fGroup]="userForm"
+        [fControlName]="'email'"
+        [isError]="
+          userForm.controls.email.touched && userForm.controls.email.invalid
+        "
+        [errorMessage]="
+          userForm.controls.email.errors?.pattern
+            ? 'Doesn\'t match pattern'
+            : 'Email is required'
+        "
+      >
+        <ng-container icon>
+          <mat-icon color="accent"> email </mat-icon>
+        </ng-container>
+      </app-input>
+
+      <app-input
+        [placeholder]="'Avatar URL'"
+        [fGroup]="userForm"
+        [fControlName]="'avatar'"
+      >
+        <ng-container icon>
+          <mat-icon color="accent"> photo </mat-icon>
+        </ng-container>
+      </app-input>
+
+      <button
+        mat-raised-button
+        color="accent"
+        aria-label="Submit form button"
+        type="submit"
+        [disabled]="userForm.invalid"
+      >
+        Create user
+      </button>
+    </form>
+  </div>
+  <!--TODO Move to directive-->
+  <div
+    class="edit-user_overlay evaluation-2"
+    (click)="closeFormHandler(userForm.dirty, params.isConfirmClosing)"
+  ></div>
+</ng-container>

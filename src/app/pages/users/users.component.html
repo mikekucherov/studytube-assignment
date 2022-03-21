@@ -1,13 +1,20 @@
 <ng-container
   *init="{
     users: users$ | async,
-    deletedUserId: deletedUserId$ | async
+    deletedUserId: deletedUserId$ | async,
+    isEditUserModal: isEditUserModal$ | async
   } as params"
 >
-  <app-users-table [users]="params.users"
-                   [deletingUserId]="params.deletedUserId"
-                   (editLearnings)="openLearningsDialog($event)"
-                   (deleteUser)="deleteUserHandler($event)"
+  <app-users-table
+    [users]="params.users"
+    [deletingUserId]="params.deletedUserId"
+    (editLearnings)="openLearningsDialog($event)"
+    (deleteUser)="deleteUserHandler($event)"
+    (createUser)="createUserHandler('new')"
   ></app-users-table>
+  <app-edit-user
+    *ngIf="params.isEditUserModal"
+    (closeForm)="createUserHandler(null)"
+  ></app-edit-user>
   <router-outlet></router-outlet>
 </ng-container>
