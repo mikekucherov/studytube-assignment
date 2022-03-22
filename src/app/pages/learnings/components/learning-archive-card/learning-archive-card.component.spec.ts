@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LearningArchiveCardComponent } from './learning-archive-card.component';
+import { LEARNINGS_SEARCH_TOKEN } from '../../learnings.token';
+import { BehaviorSubject } from 'rxjs';
 
 describe('LearningArchiveCardComponent', () => {
   let component: LearningArchiveCardComponent;
@@ -8,9 +10,14 @@ describe('LearningArchiveCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LearningArchiveCardComponent ]
-    })
-    .compileComponents();
+      declarations: [LearningArchiveCardComponent],
+      providers: [
+        {
+          provide: LEARNINGS_SEARCH_TOKEN,
+          useValue: new BehaviorSubject(''),
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

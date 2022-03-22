@@ -29,8 +29,8 @@
     <mat-chip
       class="learning-card_users__button"
       (click)="editUsersList.emit(learning.users)"
-    >{{ learning.users?.length || 0 }} user{{
-      learning.users?.length > 1 ? "s" : ""
+      >{{ learning.users?.length || 0 }} user{{
+        learning.users?.length > 1 ? "s" : ""
       }}</mat-chip
     >
   </div>
@@ -65,5 +65,8 @@
     </mat-menu>
   </div>
 
-  <app-delete-button [isConfirmation]="true"></app-delete-button>
+  <app-delete-button
+    [isConfirmation]="true"
+    (confirmationClick)="deleteClick.emit()"
+  ></app-delete-button>
 </div>

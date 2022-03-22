@@ -43,6 +43,7 @@
       [learning]="learning"
       (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"
       (editUsersList)="openUsersDialog($event, learning.id, allUsers)"
+      (deleteClick)="deleteLearning.emit(learning.id)"
     ></app-learning-archive-card>
 
     <app-edit-users-dialog

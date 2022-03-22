@@ -3,7 +3,7 @@ import { LearningsService } from './learnings.service';
 import { LearningStatus } from './learnings.model';
 import { UsersService } from '../users/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-learnings',
@@ -57,6 +57,10 @@ export class LearningsComponent implements OnInit {
     );
   }
 
+  deleteLearningHandler(learningId: string) {
+    this.learningsService.fakeDeleteLearning(learningId);
+  }
+
   editLearning(learningId: string | 'new' | null) {
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
@@ -65,15 +69,5 @@ export class LearningsComponent implements OnInit {
       },
       queryParamsHandling: 'merge',
     });
-  }
-
-  cancelLearningEditing() {
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: {
-        learning: null
-      },
-      queryParamsHandling: 'merge'
-    })
   }
 }

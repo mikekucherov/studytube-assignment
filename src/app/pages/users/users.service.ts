@@ -23,7 +23,7 @@ export class UsersService {
     private usersQuery: UsersQuery,
     private usersStore: UsersStore,
     private requestService: RequestService,
-    private notification: MatSnackBar
+    // private notification: MatSnackBar
   ) {}
 
   async initUsers() {
@@ -38,6 +38,7 @@ export class UsersService {
     });
   }
 
+  // TODO Refactor
   fakeUpdateUsersLearnings(editedUser) {
     const users = this.usersStore.getValue().users;
 
@@ -48,7 +49,7 @@ export class UsersService {
     });
 
     setTimeout(() => {
-      this.notification.open('Changes saved');
+      // this.notification.open('Changes saved');
     }, 1000);
   }
 
@@ -81,9 +82,9 @@ export class UsersService {
         delay(2000),
         take(1),
         tap(() => {
-          this.notification.open('User successfully deleted', 'Undo', {
-            duration: 3000,
-          });
+          // this.notification.open('User successfully deleted', 'Undo', {
+          //   duration: 3000,
+          // });
           this.deletedUserId$.next(null);
         })
       )

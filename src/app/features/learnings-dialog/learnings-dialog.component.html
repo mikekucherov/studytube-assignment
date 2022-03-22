@@ -11,7 +11,9 @@
     <app-learnings-attach-table
       class="learnings-dialog_learnings-table"
       [learnings]="params.learnings"
-      (checkLearning)="checkLearningHandler($event, params.user, params.learnings)"
+      (checkLearning)="
+        checkLearningHandler($event, params.user, params.learnings)
+      "
     ></app-learnings-attach-table>
 
     <button

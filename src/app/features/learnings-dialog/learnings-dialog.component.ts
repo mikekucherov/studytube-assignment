@@ -19,7 +19,7 @@ import { LearningSelection } from '../../pages/learnings/learnings.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LearningsDialogComponent implements OnInit {
-  userId$ = this.activatedRoute.paramMap.pipe(
+  userId$ = this.activatedRoute.paramMap?.pipe(
     map((paramMap) => paramMap.get('userId'))
   );
 

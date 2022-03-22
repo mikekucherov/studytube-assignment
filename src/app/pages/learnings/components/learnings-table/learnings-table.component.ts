@@ -44,6 +44,7 @@ export class LearningsTableComponent implements OnInit {
   @Output() changeLearningStatus = new EventEmitter();
   @Output() changeLearningUsers = new EventEmitter();
   @Output() createNewLearning = new EventEmitter();
+  @Output() deleteLearning = new EventEmitter();
 
   editableLearningId$: BehaviorSubject<string> = new BehaviorSubject('');
   editableLearningsUsers$: BehaviorSubject<UserSelection[]> =

@@ -10,12 +10,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { EditUsersDialogComponent } from './components/edit-users-dialog/edit-users-dialog.component';
-import {ClickOutsideModule} from "ng-click-outside";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatButtonModule} from "@angular/material/button";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {CreateLearningModule} from "../../features/create-learning/create-learning.module";
+import { ClickOutsideModule } from 'ng-click-outside';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CreateLearningModule } from '../../features/create-learning/create-learning.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,20 +25,21 @@ import {CreateLearningModule} from "../../features/create-learning/create-learni
     LearningArchiveCardComponent,
     EditUsersDialogComponent,
   ],
-    imports: [
-        CommonModule,
-        LearningsRoutingModule,
-        ComponentsModule,
-        MatIconModule,
-        SharedModule,
-        MatChipsModule,
-        MatMenuModule,
-        ClickOutsideModule,
-        MatCheckboxModule,
-        MatPaginatorModule,
-        MatButtonModule,
-        MatTooltipModule,
-        CreateLearningModule
-    ],
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule,
+    LearningsRoutingModule,
+    ComponentsModule,
+    MatIconModule,
+    SharedModule,
+    MatChipsModule,
+    MatMenuModule,
+    ClickOutsideModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatTooltipModule,
+    CreateLearningModule,
+  ],
 })
 export class LearningsModule {}

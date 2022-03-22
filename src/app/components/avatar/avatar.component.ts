@@ -21,6 +21,6 @@ export class AvatarComponent implements OnInit {
   ngOnInit(): void {}
 
   generateAvatar(title) {
-    return `${title.split(' ')[0]?.substr(0, 1)}`;
+    return `${title?.split(' ')[0]?.substr(0, 1)}`;
   }
 }

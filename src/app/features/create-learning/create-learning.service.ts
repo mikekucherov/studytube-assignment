@@ -10,7 +10,7 @@ export class CreateLearningService {
   constructor(private learningsService: LearningsService) { }
 
   // TODO Replace with request service call
-  addLearning(learningForm: LearningInfo) {
+  addLearning(learningForm: Omit<LearningInfo, 'id'>) {
     this.learningsService.fakeAddLearning(learningForm);
   }
 }

@@ -19,7 +19,11 @@ import { DestroyService } from '../../../../shared/destroy.service';
   providers: [DestroyService],
 })
 export class EditUsersDialogComponent implements OnInit {
-  @Input() users: UserSelection[];
+  @Input() set users(value: UserSelection[]) {
+    this.selectedUsers$.next(
+      value.filter((user) => !!user.isSelected).map((user) => user.id)
+    );
+  }
 
   @Output() closeDialog = new EventEmitter();
 
@@ -30,16 +34,15 @@ export class EditUsersDialogComponent implements OnInit {
   constructor(private destroy$: DestroyService) {}
 
   ngOnInit(): void {
-    this.selectedUsers$.next(
-      this.users.filter((user) => !!user.isSelected).map((user) => user.id)
-    );
-
-    this.selectedUsers$.asObservable().pipe(
-      skip(1),
-      take(1),
-      tap(() => this.isHintDisplayed = true),
-      takeUntil(this.destroy$)
-    ).subscribe();
+    this.selectedUsers$
+      .asObservable()
+      .pipe(
+        skip(1),
+        take(1),
+        tap(() => (this.isHintDisplayed = true)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   getIsUserSelected(userIdList: string[], userId: string) {

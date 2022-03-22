@@ -11,11 +11,11 @@
     (changeLearningStatus)="changeLearningStatusHandler($event)"
     (changeLearningUsers)="changeLearningUsersHandler($event, params.users)"
     (createNewLearning)="editLearning('new')"
+    (deleteLearning)="deleteLearningHandler($event)"
   ></app-learnings-table>
 
   <app-create-learning
     *ngIf="params.isEditLearningModal"
-    (submitForm)="cancelLearningEditing()"
-    (closeForm)="cancelLearningEditing()"
+    (closeForm)="editLearning(null)"
   ></app-create-learning>
 </ng-container>

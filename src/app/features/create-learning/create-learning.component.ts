@@ -12,7 +12,6 @@ export class CreateLearningComponent implements OnInit {
 
   learningForm: FormGroup;
 
-  @Output() submitForm = new EventEmitter();
   @Output() closeForm = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder, private createLearningService: CreateLearningService) { }
@@ -41,7 +40,7 @@ export class CreateLearningComponent implements OnInit {
     }
   }
 
-  createLearning(learningForm) {
+  createLearning(learningForm: FormGroup) {
     this.createLearningService.addLearning(learningForm.value);
     this.closeForm.emit();
   }

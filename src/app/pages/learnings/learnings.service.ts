@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay, take, tap } from 'rxjs/operators';
+import { delay, take } from 'rxjs/operators';
 import { LearningInfo, LearningStatus } from './learnings.model';
 import { LearningsQuery } from './state/learnings.query';
 import { LearningsStore } from './state/learnings.store';
@@ -14,6 +14,8 @@ export class LearningsService {
   get learnings$(): Observable<LearningInfo[]> {
     return this.learningsQuery.learnings$;
   }
+
+  requestDelay = 2000;
 
   constructor(
     private learningsQuery: LearningsQuery,
@@ -32,7 +34,7 @@ export class LearningsService {
     });
   }
 
-  async fakeAddLearning(learningInfo: LearningInfo) {
+  async fakeAddLearning(learningInfo: Omit<LearningInfo, 'id'>) {
     const currentLearnings = this.learningsStore.getValue().learnings;
 
     const learnings = await of([
@@ -51,6 +53,20 @@ export class LearningsService {
     });
   }
 
+  async fakeDeleteLearning(learningId: string) {
+    const currentLearnings = this.learningsStore.getValue().learnings;
+
+    const learnings = await of(currentLearnings.filter(learning => learning.id !== learningId))
+      .pipe(delay(2000), take(1))
+      .toPromise();
+
+    this.learningsStore.update({
+      learnings,
+    });
+  }
+
+  // TODO add removeLearning method
+
   async fakeUpdateLearningStatus(
     learningInfo: Pick<LearningInfo, 'id' | 'status'>
   ) {
@@ -63,7 +79,7 @@ export class LearningsService {
         learning.id === id ? { ...learning, status } : learning
       )
     )
-      .pipe(delay(2000), take(1))
+      .pipe(delay(this.requestDelay), take(1))
       .toPromise();
 
     this.learningsStore.update({
@@ -94,7 +110,7 @@ export class LearningsService {
           : learning
       )
     )
-      .pipe(delay(2000), take(1))
+      .pipe(delay(this.requestDelay), take(1))
       .toPromise();
 
     this.learningsStore.update({
