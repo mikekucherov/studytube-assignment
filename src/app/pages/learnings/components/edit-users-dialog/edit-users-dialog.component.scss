@@ -55,12 +55,6 @@
     @include space(padding, vr-2);
     @include space(gap, vr-2);
 
-    // TODO Move all avatars to components library
-    &__avatar {
-      width: 32px;
-      height: 32px;
-    }
-
     &__name {
       margin-bottom: 0;
 

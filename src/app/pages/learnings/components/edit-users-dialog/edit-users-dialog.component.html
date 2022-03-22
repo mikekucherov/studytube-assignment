@@ -3,9 +3,9 @@
   class="users-dialog shadowed-container evaluation-3"
   (clickOutside)="closeDialog.emit(params.selectedUsers)"
 >
-  <p class="users-dialog_hint"
-     *ngIf="isHintDisplayed"
-  >{{ 'To save changes click outside this dialog' }}</p>
+  <p class="users-dialog_hint" *ngIf="isHintDisplayed">
+    {{ "To save changes click outside this dialog" }}
+  </p>
   <div class="users-dialog_container scroll-container">
     <div
       class="users-dialog_row shadowed-container shadowed-container--hover"
@@ -16,11 +16,11 @@
         class="users-dialog_row__checkbox"
         [checked]="params.selectedUsers | call: getIsUserSelected:user.id"
       ></mat-checkbox>
-      <img
-        src="{{ user.avatar }}"
-        alt="{{ user.fullname }} avatar"
-        class="users-dialog_row__avatar"
-      />
+      <app-avatar
+        [image]="user.avatar"
+        [altLabel]="user.fullname"
+        [size]="'l'"
+      ></app-avatar>
       <p class="users-dialog_row__name">
         {{ user.fullname }}
       </p>

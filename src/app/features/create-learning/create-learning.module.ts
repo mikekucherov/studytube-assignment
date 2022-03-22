@@ -21,4 +21,5 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   exports: [CreateLearningComponent],
 })
+// TODO Rename to EditLearning
 export class CreateLearningModule {}
