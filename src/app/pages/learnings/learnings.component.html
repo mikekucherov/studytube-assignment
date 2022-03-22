@@ -2,7 +2,8 @@
   *init="{
     learnings: learnings$ | async,
     users: users$ | async,
-    isEditLearningModal: isEditLearningModal$ | async
+    isEditLearningModal: isEditLearningModal$ | async,
+    deletedLearningId: deletedLearningId$ | async
   } as params"
 >
   <app-learnings-table
@@ -14,8 +15,8 @@
     (deleteLearning)="deleteLearningHandler($event)"
   ></app-learnings-table>
 
-  <app-create-learning
+  <app-edit-learning
     *ngIf="params.isEditLearningModal"
     (closeForm)="editLearning(null)"
-  ></app-create-learning>
+  ></app-edit-learning>
 </ng-container>

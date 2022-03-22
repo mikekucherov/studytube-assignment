@@ -4,11 +4,12 @@
     [checked]="isSelected"
   ></mat-checkbox>
   <div class="learning-card_inner">
-    <img
-      src="{{ learning?.cover }}"
-      alt="{{ learning?.title }} cover"
+    <app-avatar
+      [image]="learning?.cover"
+      [altLabel]="learning?.title + ' cover'"
+      [size]="'l'"
       class="learning-card_cover"
-    />
+    ></app-avatar>
     <div class="learning-card_info">
       <p class="learning-card_info__title">
         {{ learning?.title }}

@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "node postinstall.js"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@datorama/akita": "^7.1.1",
+    "ascii-art": "^2.8.5",
+    "ascii-art-ansi": "^1.4.1",
     "ng-click-outside": "^9.0.1",
     "prettier": "^2.6.0",
     "rxjs": "~6.6.0",
@@ -34,6 +37,8 @@
     "@ngneat/spectator": "^10.0.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "ascii-art-font": "^1.0.2",
+    "figlet": "^1.5.2",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

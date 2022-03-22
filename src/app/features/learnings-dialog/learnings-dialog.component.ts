@@ -79,7 +79,6 @@ export class LearningsDialogComponent implements OnInit {
         : [...user.learnings, learnings.find((l) => l.id === learningId)],
     };
 
-    // TODO Fake update
     this.usersService.fakeUpdateUsersLearnings(updatedUserInfo);
   }
 }

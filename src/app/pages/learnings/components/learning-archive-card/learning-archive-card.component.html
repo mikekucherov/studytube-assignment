@@ -1,5 +1,8 @@
 <div
-  *init="searchValue$ | async as searchValue"
+  *init="{
+    searchValue: searchValue$ | async,
+    deletedLearningId: deletedLearningId$ | async
+  } as params"
   class="learning-card shadowed-container"
 >
   <div class="learning-card--left">
@@ -13,7 +16,7 @@
     <div class="learning-card_info">
       <p
         class="learning-card_title"
-        [innerHTML]="learning.title | highlight: searchValue"
+        [innerHTML]="learning.title | highlight: params.searchValue"
       ></p>
       <p class="learning-card_description">
         {{ learning.description }}
@@ -66,6 +69,7 @@
   </div>
 
   <app-delete-button
+    [isLoading]="learning.id === params.deletedLearningId"
     [isConfirmation]="true"
     (confirmationClick)="deleteClick.emit()"
   ></app-delete-button>

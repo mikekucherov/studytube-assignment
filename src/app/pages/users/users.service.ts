@@ -6,7 +6,6 @@ import { UserInfo } from './users.model';
 import { delay, take, tap } from 'rxjs/operators';
 import { RequestService } from '../../core/request.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LearningStatus } from '../learnings/learnings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,14 +15,15 @@ export class UsersService {
     return this.usersQuery.users$;
   }
 
+  requestDelay = 2000;
+
   deletedUserId$ = new BehaviorSubject(null);
 
-  // TODO Create a Notification Module as a wrapper above material service
   constructor(
     private usersQuery: UsersQuery,
     private usersStore: UsersStore,
     private requestService: RequestService,
-    // private notification: MatSnackBar
+    private notifications: MatSnackBar
   ) {}
 
   async initUsers() {
@@ -38,19 +38,25 @@ export class UsersService {
     });
   }
 
-  // TODO Refactor
-  fakeUpdateUsersLearnings(editedUser) {
-    const users = this.usersStore.getValue().users;
+  async fakeUpdateUsersLearnings(editedUser) {
+    const currentUsers = this.usersStore.getValue().users;
+
+    const users = await of(
+      currentUsers.map((user) =>
+        user.id === editedUser.id ? editedUser : user
+      )
+    )
+      .pipe(
+        take(1),
+        tap(() => {
+          this.notifications.open('Users learnings list updated!');
+        })
+      )
+      .toPromise();
 
     this.usersStore.update({
-      users: users.map((user) =>
-        user.id === editedUser.id ? editedUser : user
-      ),
+      users,
     });
-
-    setTimeout(() => {
-      // this.notification.open('Changes saved');
-    }, 1000);
   }
 
   async createUser(userInfo) {
@@ -63,7 +69,13 @@ export class UsersService {
         id: (currentUsers.length + 1).toString(),
       },
     ])
-      .pipe(delay(2000), take(1))
+      .pipe(
+        delay(this.requestDelay),
+        take(1),
+        tap(() => {
+          this.notifications.open('User successfully created!');
+        })
+      )
       .toPromise();
 
     this.usersStore.update({
@@ -76,15 +88,12 @@ export class UsersService {
 
     this.deletedUserId$.next(userId);
 
-    // TODO Subscribe to undo action
     const users = await of(currentUsers.filter((user) => user.id !== userId))
       .pipe(
-        delay(2000),
+        delay(this.requestDelay),
         take(1),
         tap(() => {
-          // this.notification.open('User successfully deleted', 'Undo', {
-          //   duration: 3000,
-          // });
+          this.notifications.open('User successfully deleted');
           this.deletedUserId$.next(null);
         })
       )

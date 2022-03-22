@@ -15,8 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CreateLearningModule } from '../../features/create-learning/create-learning.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditLearningModule } from '../../features/edit-learning/edit-learning.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     LearningsRoutingModule,
     ComponentsModule,
     MatIconModule,
@@ -39,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatButtonModule,
     MatTooltipModule,
-    CreateLearningModule,
+    EditLearningModule,
   ],
 })
 export class LearningsModule {}

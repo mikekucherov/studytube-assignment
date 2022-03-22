@@ -1,0 +1,28 @@
+<ng-container *init="{ isConfirmClosing: isConfirmClosing$ | async } as params">
+  <div class="form-modal shadowed-container evaluation-3"
+       [class.form-modal--confirm]="params.isConfirmClosing"
+  >
+    <p *ngIf="params.isConfirmClosing" class="form-modal_hint">
+      Are you sure you want close form without saving?
+    </p>
+    <form
+      class="form-modal_form"
+      [formGroup]="fGroup"
+      (ngSubmit)="submitForm.emit(fGroup)"
+    >
+      <ng-content></ng-content>
+      <button
+        mat-raised-button
+        color="accent"
+        aria-label="Submit form button"
+        type="submit"
+      >
+        Create
+      </button>
+    </form>
+  </div>
+  <div
+    class="form-modal_overlay evaluation-2"
+    (click)="closeFormHandler(fGroup.dirty, params.isConfirmClosing)"
+  ></div>
+</ng-container>

@@ -5,7 +5,7 @@ import {LearningInfo} from "../../pages/learnings/learnings.model";
 @Injectable({
   providedIn: 'root'
 })
-export class CreateLearningService {
+export class EditLearningService {
 
   constructor(private learningsService: LearningsService) { }
 

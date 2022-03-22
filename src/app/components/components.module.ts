@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TextareaComponent } from './textarea/textarea.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import {SharedModule} from "../shared/shared.module";
+import { FormModalComponent } from './form-modal/form-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,17 +28,19 @@ import {SharedModule} from "../shared/shared.module";
     InputComponent,
     TextareaComponent,
     AvatarComponent,
+    FormModalComponent,
   ],
-  exports: [
-    NavigationBarComponent,
-    LearningCardComponent,
-    SpinnerComponent,
-    ConfirmationMenuComponent,
-    DeleteButtonComponent,
-    InputComponent,
-    TextareaComponent,
-    AvatarComponent
-  ],
+    exports: [
+        NavigationBarComponent,
+        LearningCardComponent,
+        SpinnerComponent,
+        ConfirmationMenuComponent,
+        DeleteButtonComponent,
+        InputComponent,
+        TextareaComponent,
+        AvatarComponent,
+        FormModalComponent
+    ],
   imports: [
     CommonModule,
     MatIconModule,

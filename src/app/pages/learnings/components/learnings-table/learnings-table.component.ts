@@ -67,14 +67,19 @@ export class LearningsTableComponent implements OnInit {
   }
 
   openUsersDialog(
-    learningUser: UserShort[],
+    learningUsers: UserShort[],
     learningId: string,
     allUsers: UserInfo[]
   ) {
+    console.log({
+      learningUsers,
+      learningId,
+      allUsers
+    })
     this.editableLearningId$.next(learningId);
     this.editableLearningsUsers$.next(
       allUsers.map((user) =>
-        learningUser?.some((learningUser) => learningUser.id === user.id)
+        learningUsers?.some((learningUser) => learningUser.id === user.id)
           ? { ...user, isSelected: true }
           : { ...user, isSelected: false }
       )
@@ -123,5 +128,9 @@ export class LearningsTableComponent implements OnInit {
 
   changePage(pageInfo: PageEvent) {
     this.pageIndex = pageInfo.pageIndex;
+  }
+
+  trackByFn(i, item) {
+    return i || item._id;
   }
 }

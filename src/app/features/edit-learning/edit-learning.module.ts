@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateLearningComponent } from './create-learning.component';
+import { EditLearningComponent } from './edit-learning.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../components/components.module';
@@ -9,7 +9,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
-  declarations: [CreateLearningComponent],
+  declarations: [EditLearningComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -19,7 +19,7 @@ import {MatButtonModule} from "@angular/material/button";
     ClickOutsideModule,
     MatButtonModule,
   ],
-  exports: [CreateLearningComponent],
+  exports: [EditLearningComponent],
 })
 // TODO Rename to EditLearning
-export class CreateLearningModule {}
+export class EditLearningModule {}

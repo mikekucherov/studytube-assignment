@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { UserSelection } from '../../../users/users.model';
 import { BehaviorSubject } from 'rxjs';
 import { skip, take, takeUntil, tap } from 'rxjs/operators';
 import { DestroyService } from '../../../../shared/destroy.service';
@@ -19,11 +18,7 @@ import { DestroyService } from '../../../../shared/destroy.service';
   providers: [DestroyService],
 })
 export class EditUsersDialogComponent implements OnInit {
-  @Input() set users(value: UserSelection[]) {
-    this.selectedUsers$.next(
-      value.filter((user) => !!user.isSelected).map((user) => user.id)
-    );
-  }
+  @Input() users;
 
   @Output() closeDialog = new EventEmitter();
 
@@ -34,6 +29,10 @@ export class EditUsersDialogComponent implements OnInit {
   constructor(private destroy$: DestroyService) {}
 
   ngOnInit(): void {
+    this.selectedUsers$.next(
+      this.users.filter((user) => !!user.isSelected).map((user) => user.id)
+    );
+
     this.selectedUsers$
       .asObservable()
       .pipe(

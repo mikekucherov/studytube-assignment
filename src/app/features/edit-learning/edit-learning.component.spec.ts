@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateLearningComponent } from './create-learning.component';
+import { EditLearningComponent } from './create-learning.component';
 import {FormBuilder} from "@angular/forms";
 
 describe('CreateLearningComponent', () => {
-  let component: CreateLearningComponent;
-  let fixture: ComponentFixture<CreateLearningComponent>;
+  let component: EditLearningComponent;
+  let fixture: ComponentFixture<EditLearningComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateLearningComponent ],
+      declarations: [ EditLearningComponent ],
       providers: [
         {
           provide: FormBuilder,
@@ -23,7 +23,7 @@ describe('CreateLearningComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateLearningComponent);
+    fixture = TestBed.createComponent(EditLearningComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

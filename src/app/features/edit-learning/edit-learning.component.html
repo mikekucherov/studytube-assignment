@@ -1,0 +1,44 @@
+<app-form-modal
+  [fGroup]="learningForm"
+  (submitForm)="createLearning($event)"
+>
+  <app-input
+    [placeholder]="'Title'"
+    [fGroup]="learningForm"
+    [fControlName]="'title'"
+  >
+    <ng-container icon>
+      <mat-icon color="accent"> create </mat-icon>
+    </ng-container>
+  </app-input>
+
+  <app-textarea
+    [fGroup]="learningForm"
+    [fControlName]="'description'"
+    [placeholder]="'Learning description'"
+  >
+    <ng-container icon>
+      <mat-icon color="accent"> subject </mat-icon>
+    </ng-container>
+  </app-textarea>
+
+  <app-input
+    [placeholder]="'Duration'"
+    [fGroup]="learningForm"
+    [fControlName]="'duration'"
+  >
+    <ng-container icon>
+      <mat-icon color="accent"> watch_later </mat-icon>
+    </ng-container>
+  </app-input>
+
+  <app-input
+    [placeholder]="'Cover URL'"
+    [fGroup]="learningForm"
+    [fControlName]="'cover'"
+  >
+    <ng-container icon>
+      <mat-icon color="accent"> photo </mat-icon>
+    </ng-container>
+  </app-input>
+</app-form-modal>

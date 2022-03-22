@@ -1,0 +1,68 @@
+@import "./src/assets/vars";
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.form-modal {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+
+  width: 40%;
+
+  @include space(padding, vr-3);
+
+  &_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $black-40;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+
+    @include space(gap, vr-3);
+  }
+
+  &_hint {
+    position: absolute;
+    top: -48px;
+
+    color: $white-60;
+
+    @include font($typography-code...);
+  }
+
+  &_submit-button {
+    display: flex;
+    align-self: center;
+  }
+
+  &--confirm {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}

@@ -38,7 +38,7 @@
     <app-learning-archive-card
       *ngFor="
         let learning of filteredLearnings
-          | call: performPagination:pageIndex:pageSize
+          | call: performPagination:pageIndex:pageSize; trackBy: trackByFn
       "
       [learning]="learning"
       (changeLearningStatus)="changeLearningStatusHandler($event, learning.id)"

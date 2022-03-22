@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, take } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { delay, take, tap } from 'rxjs/operators';
 import { LearningInfo, LearningStatus } from './learnings.model';
 import { LearningsQuery } from './state/learnings.query';
 import { LearningsStore } from './state/learnings.store';
 import { RequestService } from '../../core/request.service';
 import { UserShort } from '../users/users.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +18,13 @@ export class LearningsService {
 
   requestDelay = 2000;
 
+  deletedLearningId$ = new BehaviorSubject(null);
+
   constructor(
     private learningsQuery: LearningsQuery,
     private learningsStore: LearningsStore,
-    private requestService: RequestService
+    private requestService: RequestService,
+    private notifications: MatSnackBar
   ) {}
 
   async initLearnings() {
@@ -45,7 +49,13 @@ export class LearningsService {
         status: LearningStatus.Active,
       },
     ])
-      .pipe(delay(2000), take(1))
+      .pipe(
+        delay(this.requestDelay),
+        take(1),
+        tap(() => {
+          this.notifications.open('Learning added!');
+        })
+      )
       .toPromise();
 
     this.learningsStore.update({
@@ -56,16 +66,25 @@ export class LearningsService {
   async fakeDeleteLearning(learningId: string) {
     const currentLearnings = this.learningsStore.getValue().learnings;
 
-    const learnings = await of(currentLearnings.filter(learning => learning.id !== learningId))
-      .pipe(delay(2000), take(1))
+    this.deletedLearningId$.next(learningId);
+
+    const learnings = await of(
+      currentLearnings.filter((learning) => learning.id !== learningId)
+    )
+      .pipe(
+        delay(this.requestDelay),
+        take(1),
+        tap(() => {
+          this.notifications.open('Learning successfully deleted');
+          this.deletedLearningId$.next(null);
+        })
+      )
       .toPromise();
 
     this.learningsStore.update({
       learnings,
     });
   }
-
-  // TODO add removeLearning method
 
   async fakeUpdateLearningStatus(
     learningInfo: Pick<LearningInfo, 'id' | 'status'>
@@ -79,7 +98,13 @@ export class LearningsService {
         learning.id === id ? { ...learning, status } : learning
       )
     )
-      .pipe(delay(this.requestDelay), take(1))
+      .pipe(
+        delay(this.requestDelay),
+        take(1),
+        tap(() => {
+          this.notifications.open('Learning status updated');
+        })
+      )
       .toPromise();
 
     this.learningsStore.update({
@@ -110,7 +135,13 @@ export class LearningsService {
           : learning
       )
     )
-      .pipe(delay(this.requestDelay), take(1))
+      .pipe(
+        delay(this.requestDelay),
+        take(1),
+        tap(() => {
+          this.notifications.open('Learning users list updated!');
+        })
+      )
       .toPromise();
 
     this.learningsStore.update({
