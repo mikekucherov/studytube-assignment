@@ -37,5 +37,8 @@ To polish this application I'm planning to do next steps:
 - Create a better NotificationService with built-in undo logic and timers on top of Angular Material one
 - Increase test coverage
 
+### P.S
+Doing this assginment was a pleasure yet torture sometimes. Due to lack of many ristrictions I wanted to implement a lot of stuff and deffinately got overwhelmed at some point. A lot of things happenning nowadays and it deffinately caused impact. And just as a reminder to myself and to whoever read this - never underestimate evil and fight with it as much as you can. Glory to Ukraine!
+
 [![Twitter Handle](https://img.shields.io/twitter/follow/mikekucherov?style=social)](https://twitter.com/mikekucherov)
 
