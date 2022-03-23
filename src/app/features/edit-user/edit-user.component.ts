@@ -49,7 +49,9 @@ export class EditUserComponent implements OnInit {
   }
 
   createUser(userInfo) {
-    this.editUserService.createUser(userInfo.value);
+    if (userInfo?.value) {
+      this.editUserService.createUser(userInfo.value);
+    }
     this.closeForm.emit();
   }
 }
