@@ -8,8 +8,6 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserInfo } from '../../pages/users/users.model';
-import {MatTableDataSource} from "@angular/material/table";
-import {BehaviorSubject} from "rxjs";
 import {EditUserService} from "./edit-user.service";
 
 @Component({
@@ -24,10 +22,11 @@ export class EditUserComponent implements OnInit {
   }
 
   userForm: FormGroup;
-  isConfirmClosing$ = new BehaviorSubject(false);
 
-  // TODO Fix email pattern
-  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+  /**
+   * Default Angular email validator passes some invalid emails
+   */
+  emailPattern = '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$';
 
   @Output() closeForm = new EventEmitter();
 
@@ -52,13 +51,5 @@ export class EditUserComponent implements OnInit {
   createUser(userInfo) {
     this.editUserService.createUser(userInfo.value);
     this.closeForm.emit();
-  }
-
-  closeFormHandler(isDirty, isConfirmed) {
-    if (!isDirty || isConfirmed) {
-      this.closeForm.emit();
-    } else {
-      this.isConfirmClosing$.next(true);
-    }
   }
 }

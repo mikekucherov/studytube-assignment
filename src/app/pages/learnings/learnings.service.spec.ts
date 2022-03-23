@@ -50,7 +50,6 @@ describe('LearningsService', () => {
     service.learnings$
       .pipe(filter((v) => !!v.length))
       .subscribe((learnings) => {
-        // TODO Replace when backend logic will be available
         expect(
           learnings.find(
             (learning) => learning.id === learnings.length.toString()

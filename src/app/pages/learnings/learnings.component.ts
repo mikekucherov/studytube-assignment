@@ -51,7 +51,9 @@ export class LearningsComponent implements OnInit {
     });
   }
 
-  // TODO When the real API comes get rid of users parameter in fakeUpdate method
+  /**
+   * users parameter won't be needed when real API will be available
+   */
   changeLearningUsersHandler(
     learningInfo: {
       learningId: string;

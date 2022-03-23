@@ -66,7 +66,9 @@ export class LearningsDialogComponent implements OnInit {
     this.learningsService.initLearnings();
   }
 
-  // TODO Get rid of learnings param if Real API will be available
+  /**
+   * In case of working with real API parameter learnings is redundant of course
+  **/
   checkLearningHandler(
     learningId: string,
     user: UserInfo,

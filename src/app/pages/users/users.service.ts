@@ -26,8 +26,12 @@ export class UsersService {
     private notifications: MatSnackBar
   ) {}
 
+  /**
+   * Most likely pagination for both users and learnings will be
+   * performed on the server, and initialization methods will receive arguments
+   * like pageSize and pageIndex
+   */
   async initUsers() {
-    // TODO Add pagintation to user getting request
     const users = await this.requestService
       .getUsersList()
       .pipe(take(1))

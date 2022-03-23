@@ -19,7 +19,6 @@ export class EditLearningComponent implements OnInit {
   ngOnInit(): void {
     this.initLearningForm();
   }
-
   initLearningForm() {
     const { required } = Validators;
 

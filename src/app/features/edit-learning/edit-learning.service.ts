@@ -9,7 +9,6 @@ export class EditLearningService {
 
   constructor(private learningsService: LearningsService) { }
 
-  // TODO Replace with request service call
   addLearning(learningForm: Omit<LearningInfo, 'id'>) {
     this.learningsService.fakeAddLearning(learningForm);
   }
