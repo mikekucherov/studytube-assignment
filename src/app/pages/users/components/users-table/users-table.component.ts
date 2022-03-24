@@ -60,7 +60,9 @@ export class UsersTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+    }
   }
 
   filterUsersByQuery(query: string) {

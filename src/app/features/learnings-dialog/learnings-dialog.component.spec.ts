@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LearningsDialogComponent } from './learnings-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('LearningsDialogComponent', () => {
   let component: LearningsDialogComponent;
@@ -16,6 +17,10 @@ describe('LearningsDialogComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: '',
+        },
+        {
+          provide: MatSnackBar,
+          useValue: () => {},
         },
       ],
     }).compileComponents();

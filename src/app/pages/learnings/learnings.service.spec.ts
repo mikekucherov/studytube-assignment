@@ -10,6 +10,7 @@ import {
   USERS_LIST,
 } from '../../shared/mock.data';
 import { LearningStatus } from './learnings.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('LearningsService', () => {
   let service: LearningsService;
@@ -23,6 +24,12 @@ describe('LearningsService', () => {
             getLearningsList: () => {
               return of(LEARNINGS_LIST);
             },
+          },
+        },
+        {
+          provide: MatSnackBar,
+          useValue: {
+            open: () => {},
           },
         },
       ],

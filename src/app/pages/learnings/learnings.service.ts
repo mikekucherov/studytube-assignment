@@ -53,7 +53,7 @@ export class LearningsService {
         delay(this.requestDelay),
         take(1),
         tap(() => {
-          this.notifications.open('Learning added!');
+          this.notifications?.open('Learning added!');
         })
       )
       .toPromise();
@@ -75,7 +75,7 @@ export class LearningsService {
         delay(this.requestDelay),
         take(1),
         tap(() => {
-          this.notifications.open('Learning successfully deleted');
+          this.notifications?.open('Learning successfully deleted');
           this.deletedLearningId$.next(null);
         })
       )
@@ -102,7 +102,7 @@ export class LearningsService {
         delay(this.requestDelay),
         take(1),
         tap(() => {
-          this.notifications.open('Learning status updated');
+          this.notifications?.open('Learning status updated');
         })
       )
       .toPromise();
@@ -139,7 +139,7 @@ export class LearningsService {
         delay(this.requestDelay),
         take(1),
         tap(() => {
-          this.notifications.open('Learning users list updated!');
+          this.notifications?.open('Learning users list updated!');
         })
       )
       .toPromise();

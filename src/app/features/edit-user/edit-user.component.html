@@ -4,7 +4,7 @@
     [fGroup]="userForm"
     [fControlName]="'fullname'"
     [isError]="
-      userForm.controls.fullname.touched && userForm.controls.fullname.invalid
+      userForm?.controls.fullname.touched && userForm?.controls.fullname.invalid
     "
     [errorMessage]="'Name is required'"
   >
@@ -18,10 +18,10 @@
     [fGroup]="userForm"
     [fControlName]="'email'"
     [isError]="
-      userForm.controls.email.touched && userForm.controls.email.invalid
+      userForm?.controls.email.touched && userForm?.controls.email.invalid
     "
     [errorMessage]="
-      userForm.controls.email.errors?.pattern
+      userForm?.controls.email.errors?.pattern
         ? 'Doesn\'t match pattern'
         : 'Email is required'
     "
