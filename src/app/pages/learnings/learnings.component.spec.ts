@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LearningsComponent } from './learnings.component';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LearningsModule } from './learnings.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UsersService } from '../users/users.service';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('LearningsComponent', () => {
   let component: LearningsComponent;
@@ -26,6 +27,12 @@ describe('LearningsComponent', () => {
           provide: UsersService,
           useValue: {
             initUsers: () => {},
+          },
+        },
+        {
+          provide: MatSnackBar,
+          useValue: {
+            open: () => {},
           },
         },
       ],
@@ -54,7 +61,7 @@ describe('LearningsComponent', () => {
       queryParams: {
         learning: 'new',
       },
-      queryParamsHandling: 'merge'
+      queryParamsHandling: 'merge',
     });
   });
 });

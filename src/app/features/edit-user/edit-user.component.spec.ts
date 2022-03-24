@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditUserComponent } from './edit-user.component';
 import {FormBuilder} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 describe('EditUserComponent', () => {
   let component: EditUserComponent;
@@ -16,6 +17,10 @@ describe('EditUserComponent', () => {
           useValue: {
             group: () => {}
           }
+        },
+        {
+          provide: MatSnackBar,
+          useValue: () => {}
         }
       ]
     })

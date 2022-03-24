@@ -30,7 +30,7 @@ export class EditUsersDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedUsers$.next(
-      this.users.filter((user) => !!user.isSelected).map((user) => user.id)
+      this.users?.filter((user) => !!user.isSelected).map((user) => user.id)
     );
 
     this.selectedUsers$
